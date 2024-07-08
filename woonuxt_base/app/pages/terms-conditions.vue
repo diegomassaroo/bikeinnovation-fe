@@ -1,5 +1,5 @@
 <script setup>
-const { data: pageData } = await useAsyncGql('getPage', { uri: '/privacy-policy' });
+const { data: pageData } = await useAsyncGql('getPage', { uri: '/terms-conditions' });
 
 const layoutComponents = new Map([
   ['PageGroupPageFieldsTextLayout', resolveComponent('TextLayout')],
