@@ -1,0 +1,108 @@
+query getPage($uri: ID!) {
+  page(id: $uri, idType: URI) {
+    pageGroup {
+      pageFields {
+        ... on PageGroupPageFieldsCoverLayout {
+          fieldGroupName
+          text
+          link {
+            target
+            title
+            url
+          }
+          video
+        }
+        ... on PageGroupPageFieldsTextLayout {
+          fieldGroupName
+          title
+          text
+        }
+        ... on PageGroupPageFieldsTitleLayout {
+          fieldGroupName
+          text
+          link {
+            target
+            title
+            url
+          }
+        }
+        ... on PageGroupPageFieldsThumbLayout {
+          fieldGroupName
+          text
+          size
+          spacer
+          link {
+            target
+            title
+            url
+          }
+          picture {
+            node {
+              srcSet
+              sourceUrl
+              title
+            }
+          }
+        }
+        ... on PageGroupPageFieldsDoubleThumbLayout {
+          fieldGroupName
+          firstThumb {
+            link {
+              target
+              title
+              url
+            }
+            picture {
+              node {
+                title
+                srcSet
+                sourceUrl
+              }
+            }
+          }
+          secondThumb {
+            link {
+              target
+              title
+              url
+            }
+            picture {
+              node {
+                sourceUrl
+                srcSet
+                title
+              }
+            }
+          }
+        }
+        ... on PageGroupPageFieldsProductsLayout {
+          fieldGroupName
+          title
+          link {
+            target
+            title
+            url
+          }
+          product {
+            nodes {
+              ... on SimpleProduct {
+                id
+                name
+                image {
+                  title
+                  srcSet
+                  sourceUrl
+                }
+                price
+              }
+              databaseId
+              id
+              slug
+              uri
+            }
+          }
+        }
+      }
+    }
+  }
+}

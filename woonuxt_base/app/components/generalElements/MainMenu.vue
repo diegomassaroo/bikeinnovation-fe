@@ -1,10 +1,8 @@
 <template>
   <nav>
-    <NuxtLink to="/">{{ $t('messages.general.home') }}</NuxtLink>
-    <NuxtLink to="/products">{{ $t('messages.general.allProducts') }}</NuxtLink>
-    <NuxtLink to="/categories">{{ $t('messages.shop.category', 2) }}</NuxtLink>
-    <NuxtLink to="/contact">{{ $t('messages.general.contact') }}</NuxtLink>
-    <NuxtLink class="lg:hidden" to="/wishlist" :prefetch="false">Wishlist</NuxtLink>
-    <NuxtLink class="lg:hidden" to="/my-account" :prefetch="false">My Account</NuxtLink>
+    <NuxtLink to="/categoria-prodotto/biciclette">{{ $t('messages.shop.bikes') }}</NuxtLink>
+    <NuxtLink to="/categoria-prodotto/componenti-e-accessori">{{ $t('messages.shop.componentsAndAccessories') }}</NuxtLink>
+    <NuxtLink to="/categoria-prodotto/abbigliamento">{{ $t('messages.shop.clothing') }}</NuxtLink>
+    <NuxtLink to="/chi-siamo">{{ $t('messages.general.about') }}</NuxtLink>
   </nav>
 </template>

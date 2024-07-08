@@ -138,7 +138,7 @@ const disabledAddToCart = computed(() => {
               <NuxtLink
                 v-for="category in product.productCategories.nodes"
                 :key="category.slug"
-                :to="`/product-category/${decodeURIComponent(category.slug)}`"
+                :to="`/categoria-prodotto/${decodeURIComponent(category.slug)}`"
                 class="hover:text-primary"
                 :title="category.name"
                 >{{ category.name }}<span class="comma">, </span>

@@ -1,23 +1,10 @@
 <script setup>
-const { siteName, description, shortDescription, siteImage } = useAppConfig();
-
-const { data: pageData } = await useAsyncGql('getPage', { uri: '/' });
-
-useSeoMeta({
-  ogTitle: siteName,
-  description: description,
-  ogDescription: shortDescription,
-  ogImage: siteImage,
-  twitterCard: `summary_large_image`,
-});
+const { data: pageData } = await useAsyncGql('getPage', { uri: '/chi-siamo' });
 
 const layoutComponents = new Map([
-  ['PageGroupPageFieldsCoverLayout', resolveComponent('CoverLayout')],
   ['PageGroupPageFieldsTextLayout', resolveComponent('TextLayout')],
   ['PageGroupPageFieldsTitleLayout', resolveComponent('TitleLayout')],
   ['PageGroupPageFieldsThumbLayout', resolveComponent('ThumbLayout')],
-  ['PageGroupPageFieldsDoubleThumbLayout', resolveComponent('DoubleThumbLayout')],
-  ['PageGroupPageFieldsProductsLayout', resolveComponent('ProductsLayout')],
 ]);
 
 const blocks = computed(() => {

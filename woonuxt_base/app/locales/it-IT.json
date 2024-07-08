@@ -16,8 +16,9 @@
       "tax": "Imposta",
       "myDetails": "I miei dettagli",
       "home": "Home",
+      "about": "Chi siamo",
       "allProducts": "Prodotti",
-      "contact": "Contatto",
+      "contact": "Contatti",
       "menu": "Menu",
       "color": "Colore",
       "choose": "Scegli | Scegli",
@@ -107,7 +108,10 @@
       "discount": "Sconto",
       "giftCards": "Carte regalo",
       "searchProducts": "Cerca prodotti...",
-      "couponCode": "Codice coupon"
+      "couponCode": "Codice coupon",
+      "bikes": "Biciclette",
+      "componentsAndAccessories": "Componenti e accessori",
+      "clothing": "Abbigliamento"
     },
     "billing": {
       "billing": "Fatturazione",

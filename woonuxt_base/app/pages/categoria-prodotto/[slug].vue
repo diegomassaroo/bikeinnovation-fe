@@ -14,7 +14,7 @@ onMounted(() => {
 watch(
   () => route.query,
   () => {
-    if (route.name !== 'product-category-slug') return;
+    if (route.name !== 'categoria-prodotto-slug') return;
     updateProductList();
   },
 );
@@ -27,7 +27,7 @@ useHead({
 
 <template>
   <div class="container flex items-start gap-16">
-    <Filters :hide-categories="true" />
+    <Filters />
 
     <div class="w-full">
       <div class="flex items-center justify-between w-full gap-4 mt-8 md:gap-8">

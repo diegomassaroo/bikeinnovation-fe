@@ -8,7 +8,7 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      htmlAttrs: { lang: 'en' },
+      htmlAttrs: { lang: 'it' },
       link: [{ rel: 'icon', href: '/logo.svg', type: 'image/svg+xml' }],
     },
     pageTransition: { name: 'page', mode: 'out-in' },
@@ -45,8 +45,8 @@ export default defineNuxtConfig({
       };
 
       addPage('product-page-pager', '/products/page/:pageNumber', 'products.vue');
-      addPage('product-category-page', '/product-category/:categorySlug', 'product-category/[slug].vue');
-      addPage('product-category-page-pager', '/product-category/:categorySlug/page/:pageNumber', 'product-category/[slug].vue');
+      addPage('categoria-prodotto-page', '/categoria-prodotto/:categorySlug', 'categoria-prodotto/[slug].vue');
+      addPage('categoria-prodotto-page-pager', '/categoria-prodotto/:categorySlug/page/:pageNumber', 'categoria-prodotto/[slug].vue');
       addPage('order-received', '/checkout/order-received/:orderId', 'order-summary.vue');
       addPage('order-summary', '/order-summary/:orderId', 'order-summary.vue');
     },
@@ -64,15 +64,15 @@ export default defineNuxtConfig({
   // Multilingual support
   i18n: {
     locales: [
-      { code: 'en_US', file: 'en-US.json', name: 'English 🇺🇸' },
-      { code: 'de_DE', file: 'de-DE.json', name: 'Deutsch 🇩🇪' },
-      { code: 'es_ES', file: 'es-ES.json', name: 'Español 🇪🇸' },
-      { code: 'fr_FR', file: 'fr-FR.json', name: 'Français 🇫🇷' },
       { code: 'it_IT', file: 'it-IT.json', name: 'Italiano 🇮🇹' },
-      { code: 'pt_BR', file: 'pt-BR.json', name: 'Português 🇧🇷' },
+      // { code: 'en_US', file: 'en-US.json', name: 'English 🇺🇸' },
+      // { code: 'de_DE', file: 'de-DE.json', name: 'Deutsch 🇩🇪' },
+      // { code: 'es_ES', file: 'es-ES.json', name: 'Español 🇪🇸' },
+      // { code: 'fr_FR', file: 'fr-FR.json', name: 'Français 🇫🇷' },
+      // { code: 'pt_BR', file: 'pt-BR.json', name: 'Português 🇧🇷' },
     ],
     langDir: 'locales',
-    defaultLocale: 'en_US',
+    defaultLocale: 'it_IT',
     strategy: 'no_prefix',
   },
 });
