@@ -12,7 +12,6 @@ const { hideCategories } = defineProps({ hideCategories: { type: Boolean, defaul
   <aside id="filters">
     <OrderByDropdown class="block w-full md:hidden" />
     <div class="relative z-30 grid mb-12 space-y-8 divide-y">
-      <PriceFilter />
       <CategoryFilter v-if="!hideCategories" />
       <div v-for="attribute in globalProductAttributes" :key="attribute.slug">
         <ColorFilter
@@ -30,8 +29,6 @@ const { hideCategories } = defineProps({ hideCategories: { type: Boolean, defaul
           :show-count="attribute.showCount"
           :hide-empty="attribute.hideEmpty" />
       </div>
-      <OnSaleFilter />
-      <LazyStarRatingFilter />
       <LazyResetFiltersButton v-if="isFiltersActive" />
     </div>
   </aside>

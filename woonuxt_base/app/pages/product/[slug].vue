@@ -73,7 +73,6 @@ const disabledAddToCart = computed(() => {
 <template>
   <main class="container relative py-6 xl:max-w-7xl" v-if="product">
     <SEOHead :info="product" />
-    <Breadcrumb :product class="mb-6" />
 
     <div class="flex flex-col gap-10 md:flex-row md:justify-between lg:gap-24">
       <ProductImageGallery
@@ -92,7 +91,6 @@ const disabledAddToCart = computed(() => {
               {{ type.name }}
               <WPAdminLink :link="`/wp-admin/post.php?post=${product.databaseId}&action=edit`">Edit</WPAdminLink>
             </h1>
-            <StarRating :rating="product.averageRating || 0" :count="product.reviewCount || 0" />
           </div>
           <ProductPrice class="text-xl" :sale-price="type.salePrice" :regular-price="type.regularPrice" />
         </div>
@@ -146,7 +144,6 @@ const disabledAddToCart = computed(() => {
             </div>
           </div>
         </div>
-
         <hr />
 
         <div class="flex flex-wrap gap-4">
@@ -154,9 +151,6 @@ const disabledAddToCart = computed(() => {
           <ShareButton :product />
         </div>
       </div>
-    </div>
-    <div v-if="product.description || product.reviews" class="my-32">
-      <ProductTabs :product />
     </div>
     <div class="my-32" v-if="product.related">
       <div class="mb-4 text-xl font-semibold">{{ $t('messages.shop.youMayLike') }}</div>

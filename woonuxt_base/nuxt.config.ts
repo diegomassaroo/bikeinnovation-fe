@@ -9,7 +9,7 @@ export default defineNuxtConfig({
   app: {
     head: {
       htmlAttrs: { lang: 'it' },
-      link: [{ rel: 'icon', href: '/logo.svg', type: 'image/svg+xml' }],
+      link: [{ rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml' }],
     },
     pageTransition: { name: 'page', mode: 'out-in' },
   },
@@ -18,11 +18,13 @@ export default defineNuxtConfig({
     sharedPrerenderData: true,
   },
 
+  css: ['~/assets/css/index.css'],
+
   plugins: [resolve('./app/plugins/init.ts')],
 
   components: [{ path: resolve('./app/components'), pathPrefix: false }],
 
-  modules: ['woonuxt-settings', 'nuxt-graphql-client', '@nuxtjs/tailwindcss', 'nuxt-icon', '@nuxt/image', '@nuxtjs/i18n'],
+  modules: ['woonuxt-settings', 'nuxt-font-loader', 'nuxt-graphql-client', '@nuxtjs/tailwindcss', 'nuxt-icon', '@nuxt/image', '@nuxtjs/i18n'],
 
   'graphql-client': {
     clients: {
@@ -66,13 +68,31 @@ export default defineNuxtConfig({
     locales: [
       { code: 'it_IT', file: 'it-IT.json', name: 'Italiano 🇮🇹' },
       // { code: 'en_US', file: 'en-US.json', name: 'English 🇺🇸' },
-      // { code: 'de_DE', file: 'de-DE.json', name: 'Deutsch 🇩🇪' },
-      // { code: 'es_ES', file: 'es-ES.json', name: 'Español 🇪🇸' },
-      // { code: 'fr_FR', file: 'fr-FR.json', name: 'Français 🇫🇷' },
-      // { code: 'pt_BR', file: 'pt-BR.json', name: 'Português 🇧🇷' },
     ],
     langDir: 'locales',
     defaultLocale: 'it_IT',
     strategy: 'no_prefix',
+  },
+
+  fontLoader: {
+    autoImport: true,
+    local: [
+      {
+        src: "/fonts/ABCDiatypeSemi-Mono-Regular-Trial.woff2",
+        family: "D0",
+        weight: "normal",
+        display: "swap",
+        style: "normal",
+        fallback: "sans-serif",
+      },
+      {
+        src: "/fonts/ABCDiatypeSemi-Mono-RegularItalic-Trial.woff2",
+        family: "D1",
+        weight: "normal",
+        display: "swap",
+        style: "italic",
+        fallback: "sans-serif",
+      },
+    ],
   },
 });

@@ -7,9 +7,9 @@ const { cart, toggleCart, isUpdatingCart } = useCart();
     <Icon name="ion:close-outline" class="absolute p-1 bg-white rounded-lg shadow-lg top-6 left-6 md:left-8" size="34" @click="toggleCart(false)" />
     <EmptyCart v-if="cart && !cart.isEmpty" class="rounded-lg shadow-lg p-1.5 hover:bg-red-400 hover:text-white" />
 
-    <div class="mt-8 text-center">
+    <div class="uppercase mt-8 text-center">
       {{ $t('messages.shop.cart') }}
-      <span v-if="cart?.contents?.productCount"> ({{ cart?.contents?.productCount }}) </span>
+      <span v-if="cart?.contents?.productCount"> [{{ cart?.contents?.productCount }}] </span>
     </div>
 
     <ClientOnly>
