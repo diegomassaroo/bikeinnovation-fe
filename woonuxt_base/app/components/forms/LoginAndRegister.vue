@@ -20,7 +20,7 @@
         >Email or Username <span class="text-red-500">*</span> <br />
         <input id="email" v-model="userInfo.email" placeholder="Email" type="text" required />
       </label>
-      <p v-if="formView == 'forgotPassword'" class="text-sm text-gray-500">Please enter your email address and we will send you a link to reset your password.</p>
+      <p v-if="formView == 'forgotPassword'" class="text-gray-500">Please enter your email address and we will send you a link to reset your password.</p>
       <div v-if="formView != 'forgotPassword'">
         <label for="username"
           >{{ $t('messages.account.username') }} <span class="text-red-500">*</span> <br />
@@ -32,10 +32,10 @@
         </label>
       </div>
       <Transition name="scale-y" mode="out-in">
-        <div v-if="message" class="my-4 text-sm text-green-500" v-html="message"></div>
+        <div v-if="message" class="my-4 text-green-500" v-html="message"></div>
       </Transition>
       <Transition name="scale-y" mode="out-in">
-        <div v-if="errorMessage" class="my-4 text-sm text-red-500" v-html="errorMessage"></div>
+        <div v-if="errorMessage" class="my-4 text-red-500" v-html="errorMessage"></div>
       </Transition>
       <button class="flex items-center justify-center gap-4 mt-4 text-lg">
         <LoadingIcon v-if="isPending" stroke="4" size="16" color="#fff" />

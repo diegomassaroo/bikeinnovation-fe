@@ -32,7 +32,7 @@ watch(isFiltersActive, () => {
         <input
           id="price-from"
           v-model="price[0]"
-          class="bg-white border rounded-lg max-w-full border-gray-200 leading-none w-auto p-2 pl-6 md:text-sm"
+          class="bg-white border rounded-lg max-w-full border-gray-200 leading-none w-auto p-2 pl-6"
           type="number"
           placeholder="From"
           min="0" />
@@ -42,7 +42,7 @@ watch(isFiltersActive, () => {
         <input
           id="price-to"
           v-model="price[1]"
-          class="bg-white border rounded-lg max-w-full border-gray-200 leading-none w-auto p-2 pl-6 md:text-sm"
+          class="bg-white border rounded-lg max-w-full border-gray-200 leading-none w-auto p-2 pl-6"
           type="number"
           placeholder="Up to"
           min="1" />

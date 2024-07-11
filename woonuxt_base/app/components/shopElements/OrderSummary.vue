@@ -12,7 +12,7 @@ const { cart, isUpdatingCart } = useCart();
 
     <AddCoupon class="my-8" />
 
-    <div class="grid gap-1 text-sm font-semibold text-gray-500">
+    <div class="grid gap-1 font-semibold text-gray-500">
       <div class="flex justify-between">
         <span>{{ $t('messages.shop.subtotal') }}</span>
         <span class="text-gray-700 tabular-nums" v-html="cart.subtotal" />

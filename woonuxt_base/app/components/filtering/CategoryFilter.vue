@@ -38,7 +38,7 @@ const checkboxChanged = () => {
     <div v-show="isOpen" class="mt-3 mr-1 max-h-[240px] grid gap-1.5 overflow-auto custom-scrollbar">
       <div v-for="color in allCategories" :key="color.slug" class="flex gap-2 items-start">
         <input :id="color.slug" v-model="selectedTerms" type="checkbox" :value="color.slug" @change="checkboxChanged" />
-        <label :for="color.slug" class="cursor-pointer m-0 text-sm flex-1 leading-tight">
+        <label :for="color.slug" class="cursor-pointer m-0 flex-1 leading-tight">
           <span v-html="color.name" />
           <span v-if="showCount" class="ml-1 text-gray-400 tabular-nums">({{ color.count || 0 }})</span>
         </label>

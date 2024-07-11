@@ -9,7 +9,7 @@ const readableStatus = computed(() => props.status.replace(/_/g, ' '));
 
 <style lang="postcss" scoped>
 .order-status {
-  @apply border rounded-md font-semibold bg-gray-100 text-xs leading-none p-1.5 inline-block;
+  @apply border rounded-md font-semibold bg-gray-100 leading-none p-1.5 inline-block;
 }
 
 .order-COMPLETED {

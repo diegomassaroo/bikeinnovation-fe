@@ -3,7 +3,6 @@ const { emptyCart } = useCart();
 </script>
 
 <template>
-  <button class="cursor-pointer top-6 right-6 md:right-8 absolute" title="Empty Cart" @click="emptyCart">
-    <TrashIcon />
-  </button>
+  <NuxtLink class="cursor-pointer hover:text-red-500" title="Empty Cart" @click="emptyCart">{{ $t('messages.shop.removeAll') }}</NuxtLink>
+    <!-- <TrashIcon /> -->
 </template>

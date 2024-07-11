@@ -19,7 +19,7 @@ const setActiveOption = async (id) => {
       :class="{ 'active-option': option.id === activeOption }"
       @click="setActiveOption(option.id)">
       <div>
-        <div class="text-sm leading-tight text-gray-500" v-html="option.label"></div>
+        <div class="leading-tight text-gray-500" v-html="option.label"></div>
         <div class="font-semibold text-gray-600">€{{ option.cost }}</div>
       </div>
 
@@ -33,7 +33,7 @@ const setActiveOption = async (id) => {
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 
   .option {
-    @apply bg-white border rounded-lg text-gray-600 cursor-pointer flex flex-1 text-sm py-3 px-4 gap-2 items-center hover:border-purple-300;
+    @apply bg-white border rounded-lg text-gray-600 cursor-pointer flex flex-1 py-3 px-4 gap-2 items-center hover:border-purple-300;
 
     &.active-option {
       @apply border-primary cursor-default border-opacity-50 shadow-sm pointer-events-none;

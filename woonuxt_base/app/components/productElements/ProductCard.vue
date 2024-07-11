@@ -54,7 +54,7 @@ const imagetoDisplay = computed<string>(() => {
       <NuxtLink :to="`/product/${decodeURIComponent(node.slug)}`" :title="node.name">
         <h2 class="mb-2 font-light leading-tight">{{ node.name }}</h2>
       </NuxtLink>
-      <ProductPrice class="text-sm" :sale-price="node.salePrice" :regular-price="node.regularPrice" />
+      <ProductPrice :sale-price="node.salePrice" :regular-price="node.regularPrice" />
     </div>
   </div>
 </template>

@@ -1,25 +1,31 @@
 <script setup lang="ts">
+import CloseIcon from '../cartElements/CloseIcon.vue';
+
 const { cart, toggleCart, isUpdatingCart } = useCart();
 </script>
 
 <template>
-  <div class="fixed top-0 bottom-0 right-0 z-50 flex flex-col w-11/12 max-w-lg overflow-x-hidden bg-white shadow-lg">
-    <Icon name="ion:close-outline" class="absolute p-1 bg-white rounded-lg shadow-lg top-6 left-6 md:left-8" size="34" @click="toggleCart(false)" />
-    <EmptyCart v-if="cart && !cart.isEmpty" class="rounded-lg shadow-lg p-1.5 hover:bg-red-400 hover:text-white" />
+  <div class="fixed top-0 bottom-0 right-0 z-50 flex flex-col w-full sm:w-11/12 max-w-lg overflow-x-hidden bg-white shadow-lg">
+    <!-- <div class="w-full border-b border-gray-300"><CloseIcon class="p-1" @click="toggleCart(false)" /></div> -->
+    <!-- <EmptyCart v-if="cart && !cart.isEmpty" class="p-1.5 hover:text-white" /> -->
+    <div class="w-full border-b border-gray-300 p-2 md:p-1.5 h-9 flex items-center"><NuxtLink class="cursor-pointer" @click="toggleCart(false)"></NuxtLink></div>
 
-    <div class="uppercase mt-8 text-center">
-      {{ $t('messages.shop.cart') }}
-      <span v-if="cart?.contents?.productCount"> [{{ cart?.contents?.productCount }}] </span>
+    <div class="w-full border-b border-gray-300 flex justify-between p-2 md:p-1.5 h-9 flex items-center">
+      <div>
+        <span class="uppercase">{{ $t('messages.shop.cart') }}</span>
+        <span v-if="cart?.contents?.productCount"> [{{ cart?.contents?.productCount }}] </span>
+      </div>
+      <div v-if="cart && !cart.isEmpty"><EmptyCart /></div>
     </div>
 
     <ClientOnly>
       <template v-if="cart && !cart.isEmpty">
-        <ul class="flex flex-col flex-1 gap-4 p-6 overflow-y-scroll md:p-8">
+        <ul class="flex flex-col flex-1 overflow-y-scroll">
           <CartCard v-for="item in cart.contents?.nodes" :key="item.key" :item />
         </ul>
-        <div class="px-8 mb-8">
-          <NuxtLink class="block p-3 text-lg text-center text-white bg-gray-800 rounded-lg shadow-md justify-evenly hover:bg-gray-900" to="/checkout">
-            <span class="mx-2">{{ $t('messages.shop.checkout') }}</span>
+        <div>
+          <NuxtLink class="block p-2 text-white bg-black hover:bg-green-500 hover:text-black" to="/checkout">
+            <span class="uppercase mr-2">{{ $t('messages.shop.checkout') }}</span>
             <span v-html="cart.total" />
           </NuxtLink>
         </div>

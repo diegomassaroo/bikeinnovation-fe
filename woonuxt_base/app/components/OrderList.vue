@@ -44,7 +44,7 @@ const goToOrder = (orderNumber) => {
         </tbody>
       </table>
       <div class="text-center flex justify-center w-full mt-8">
-        <button type="button" @click="refresh" class="flex items-center gap-1 text-sm leading-none hover:bg-gray-50 p-2 rounded">
+        <button type="button" @click="refresh" class="flex items-center gap-1 leading-none hover:bg-gray-50 p-2 rounded">
           <span>Reresh list</span>
           <Icon name="ion:refresh-outline" />
         </button>
@@ -61,7 +61,7 @@ tbody tr:nth-child(odd) {
 }
 
 tbody tr {
-  @apply text-sm text-gray-500 hover:text-gray-800;
+  @apply text-gray-500 hover:text-gray-800;
 }
 
 td,

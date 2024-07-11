@@ -16,7 +16,7 @@
       </div>
 
       <Transition name="scale-y" mode="out-in">
-        <div v-if="errorMessage" class="w-full text-sm text-red-500" v-html="errorMessage"></div>
+        <div v-if="errorMessage" class="w-full text-red-500" v-html="errorMessage"></div>
       </Transition>
     </div>
 

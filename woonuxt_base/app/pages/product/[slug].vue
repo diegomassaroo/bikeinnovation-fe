@@ -95,7 +95,7 @@ const disabledAddToCart = computed(() => {
           <ProductPrice class="text-xl" :sale-price="type.salePrice" :regular-price="type.regularPrice" />
         </div>
 
-        <div class="grid gap-2 my-8 text-sm">
+        <div class="grid gap-2 my-8">
           <div class="flex items-center gap-2">
             <span class="text-gray-400">{{ $t('messages.shop.availability') }}: </span>
             <StockStatus :stockStatus @updated="mergeLiveStockStatus" />
@@ -129,7 +129,7 @@ const disabledAddToCart = computed(() => {
           </div>
         </form>
 
-        <div class="grid gap-2 my-8 text-sm">
+        <div class="grid gap-2 my-8">
           <div class="flex items-center gap-2">
             <span class="text-gray-400">{{ $t('messages.shop.category', 2) }}:</span>
             <div class="product-categories" v-if="product.productCategories">

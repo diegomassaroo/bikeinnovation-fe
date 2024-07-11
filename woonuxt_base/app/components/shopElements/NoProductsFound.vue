@@ -20,7 +20,7 @@ const clearAll = () => {
       <div>
         <button
           v-if="allProducts.length"
-          class="bg-primary rounded-lg font-bold mt-8 text-center text-white text-sm w-full p-2 px-3 inline-block"
+          class="bg-primary rounded-lg font-bold mt-8 text-center text-white w-full p-2 px-3 inline-block"
           title="Clear all filters and search"
           aria-label="Clear all filters and search"
           @click="clearAll">

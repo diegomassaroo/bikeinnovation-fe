@@ -101,6 +101,8 @@
       "total": "Totale",
       "subtotal": "Subtotale",
       "rating": "Valutazione | Valutazioni",
+      "remove": "Rimuovi",
+      "removeAll": "Rimuovi tutti",
       "cart": "Carrello",
       "cartEmpty": "Il tuo carrello è vuoto.",
       "checkout": "Pagamento",

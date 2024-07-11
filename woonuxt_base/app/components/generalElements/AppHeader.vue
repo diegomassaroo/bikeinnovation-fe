@@ -6,13 +6,13 @@ const { isShowingSearch } = useSearching();
 
 <template>
   <header class="sticky top-0 bg-white z-50">
-    <div class="py-2 px-2 md:px-1.5 md:py-1.5 lg:py-0 flex justify-between gap-2">
-      <div class="flex items-center gap-4">
-        <Logo class="w-[180px] md:w-[230px]" />
+    <div class="p-2 md:px-1.5 md:py-1.5 lg:py-0 flex justify-between gap-2 h-9 border-b lg:border-b-0">
+      <div class="flex items-center gap-5">
+        <Logo class="w-[180px] md:w-[231px]" />
         <TimeDisplay class="hidden sm:flex" />
       </div>
-      <div class="flex justify-end items-center md:w-[160px] flex-1 ml-auto gap-3.5 lg:gap-4">
-        <MainMenu class="items-center hidden gap-2 lg:flex" />
+      <div class="flex justify-end items-center md:w-[160px] flex-1 ml-auto gap-3.5 lg:gap-5">
+        <MainMenu class="items-center hidden gap-5 lg:flex" />
         <ProductSearch class="hidden lg:inline-flex max-w-[180px] md:w-[60%]" />
         <!-- <SearchTrigger /> -->
         <div class="flex lg:hidden items-center">
@@ -24,9 +24,6 @@ const { isShowingSearch } = useSearching();
       </div>
     </div>
     <Transition name="scale-y" mode="out-in">
-      <!-- <div class="container p-1.5 sm:hidden" v-if="isShowingSearch">
-        <ProductSearch class="flex w-full" />
-      </div> -->
       <div class="p-0 lg:hidden">
         <ProductSearch class="flex w-full" />
       </div>

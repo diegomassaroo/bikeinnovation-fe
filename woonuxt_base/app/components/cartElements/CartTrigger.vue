@@ -10,7 +10,6 @@ const { toggleCart, cart } = useCart();
       <Transition name="popIn" mode="out-in">
         <span
           v-if="cart?.contents?.itemCount > 0"
-          class=""
           >&nbsp;[{{ cart?.contents?.itemCount }}]</span
         >
       </Transition>

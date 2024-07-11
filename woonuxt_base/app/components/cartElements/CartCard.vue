@@ -29,7 +29,7 @@ const salePercentage = computed(() => {
 
 <template>
   <SwipeCard @remove="removeItem">
-    <div v-if="productType" class="flex items-center gap-3 group">
+    <div v-if="productType" class="flex items-center gap-4 px-2 group">
       <NuxtLink :to="productSlug">
         <img
           width="64"
@@ -48,15 +48,15 @@ const salePercentage = computed(() => {
           </span>
           <span v-if="isLowStock" class="text-[10px] border-yellow-200 leading-none bg-yellow-100 inline-block p-0.5 rounded text-orange-500 border">Low Stock</span>
         </div>
-        <ProductPrice class="mt-1 text-xs" :sale-price="productType.salePrice" :regular-price="productType.regularPrice" />
+        <ProductPrice class="mt-1" :sale-price="productType.salePrice" :regular-price="productType.regularPrice" />
       </div>
-      <div class="inline-flex gap-2 flex-col items-end">
+      <div class="inline-flex gap-1 flex-col items-end">
         <QuantityInput :item />
-        <div class="text-xs text-gray-400 group-hover:text-gray-700 flex leading-none items-center">
+        <div class="text-gray-400 group-hover:text-black flex leading-none items-center">
           <button class="mr-2 pr-2 border-r" @click="moveToWishList" type="button">Move to Wishlist</button>
-          <button title="Remove Item" aria-label="Remove Item" @click="removeItem" type="button" class="flex items-center gap-1 hover:text-red-500 cursor-pointer">
-            <Icon name="ion:trash" class="hidden md:inline-block" size="12" />
-          </button>
+          <NuxtLink title="Remove Item" aria-label="Remove Item" @click="removeItem" type="button" class="flex items-center gap-1 hover:text-red-500 cursor-pointer">{{
+            $t('messages.shop.remove')
+          }}</NuxtLink>
         </div>
       </div>
     </div>

@@ -34,14 +34,14 @@ onMounted(() => {
       <icon name="ion:checkmark-circle" size="20" class="ml-auto text-primary checkmark opacity-0" />
     </div>
     <div v-if="activePaymentMethod.description" class="prose">
-      <p class="text-sm text-gray-500" v-html="activePaymentMethod.description" />
+      <p class="text-gray-500" v-html="activePaymentMethod.description" />
     </div>
   </div>
 </template>
 
 <style lang="postcss" scoped>
 .option {
-  @apply bg-white border rounded-lg text-gray-600 cursor-pointer flex flex-1 text-sm py-3 px-4 gap-2 items-center hover:border-purple-300;
+  @apply bg-white border rounded-lg text-gray-600 cursor-pointer flex flex-1 py-3 px-4 gap-2 items-center hover:border-purple-300;
 
   &.active-option {
     @apply border-primary cursor-default border-opacity-50 shadow-sm pointer-events-none;

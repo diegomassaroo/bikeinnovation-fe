@@ -65,15 +65,15 @@ async function addComment() {
 
 <template>
   <div>
-    <h4 v-if="reviews.edges.length" class="font-semibold text-sm text-2xl text-gray-900">{{ $t('messages.shop.customerReviews') }}</h4>
-    <h4 v-else class="font-semibold text-sm text-2xl text-gray-900">{{ $t('messages.shop.noReviews') }}</h4>
+    <h4 v-if="reviews.edges.length" class="font-semibold text-2xl text-gray-900">{{ $t('messages.shop.customerReviews') }}</h4>
+    <h4 v-else class="font-semibold text-2xl text-gray-900">{{ $t('messages.shop.noReviews') }}</h4>
     <div v-if="reviews.edges.length" class="my-2">
-      <StarRating :rating="reviews.averageRating" :hide-count="true" class="text-sm mr-2" />
-      <span class="text-sm"> {{ $t('messages.general.basedOn') }} {{ reviews.edges.length }} {{ $t('messages.shop.reviews') }}</span>
+      <StarRating :rating="reviews.averageRating" :hide-count="true" class="mr-2" />
+      <span> {{ $t('messages.general.basedOn') }} {{ reviews.edges.length }} {{ $t('messages.shop.reviews') }}</span>
     </div>
     <div class="my-4 bars">
       <div v-for="rating in numberAndPercentageOfEachRating" :key="rating" class="flex gap-4 items-center">
-        <div class="flex text-sm gap-1 items-center">
+        <div class="flex gap-1 items-center">
           {{ rating.rating }}
           <Icon class="text-yellow-400" name="ion:star" />
         </div>
@@ -84,14 +84,14 @@ async function addComment() {
       </div>
     </div>
     <div class="mt-10 text-xl mb-2 text-gray-900">Share your thoughts</div>
-    <div class="text-sm mb-4">If you have used this product, we would love to hear about your experience.</div>
+    <div class="mb-4">If you have used this product, we would love to hear about your experience.</div>
     <button @click="show = !show" class="border rounded-lg text-center w-full p-2">{{ show ? $t('messages.shop.close') : $t('messages.shop.writeReview') }}</button>
     <transition class="ease-in-out transform transition-all" name="scale-y">
       <form v-if="show" @submit.prevent="addComment" class="writeReview">
         <div class="w-full text-gray-500">
           <div class="p-5 mt-3 grid gap-2 border rounded-lg">
             <div class="block text-center mb-1.5">
-              <label class="text-center text-sm block relative m-auto">{{ $t('messages.shop.rateReview') }} <span class="text-red-500">*</span></label>
+              <label class="text-center block relative m-auto">{{ $t('messages.shop.rateReview') }} <span class="text-red-500">*</span></label>
               <div class="gap-1 flex justify-center mt-2 relative">
                 <label
                   v-for="i in 5"
@@ -106,18 +106,18 @@ async function addComment() {
               </div>
             </div>
             <div class="w-full col-span-full">
-              <label for="content" class="text-sm mb-0.5">{{ $t('messages.shop.rateContent') }} <span class="text-red-500">*</span></label>
+              <label for="content" class="mb-0.5">{{ $t('messages.shop.rateContent') }} <span class="text-red-500">*</span></label>
               <textarea class="w-full" id="content" placeholder="Great Quality" v-model="content" required></textarea>
             </div>
             <div class="w-full col-span-full">
-              <label for="author" class="text-sm mb-0.5">{{ $t('messages.shop.rateEmail') }} <span class="text-red-500">*</span></label>
+              <label for="author" class="mb-0.5">{{ $t('messages.shop.rateEmail') }} <span class="text-red-500">*</span></label>
               <input class="w-full" id="author" placeholder="example@example.com" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" v-model="authorEmail" required />
             </div>
             <Transition name="scale-y" mode="out-in">
-              <div v-if="errorMessage" class="my-4 text-sm text-red-500" v-html="errorMessage"></div>
+              <div v-if="errorMessage" class="my-4 text-red-500" v-html="errorMessage"></div>
             </Transition>
             <Transition name="scale-y" mode="out-in">
-              <div v-if="successMessage" class="my-4 text-sm text-green-500" v-html="successMessage"></div>
+              <div v-if="successMessage" class="my-4 text-green-500" v-html="successMessage"></div>
             </Transition>
             <div class="w-full col-span-full text-center mt-3">
               <button class="flex gap-4 justify-center items-center transition font-semibold rounded-md w-full p-2 bg-amber-300 text-amber-900 hover:bg-amber-400" type="submit">

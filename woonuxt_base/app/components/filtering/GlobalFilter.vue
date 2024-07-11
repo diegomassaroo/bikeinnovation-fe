@@ -37,7 +37,7 @@ const checkboxChanged = () => {
   <div v-show="isOpen" class="mt-3 mr-1 max-h-[240px] grid gap-1 overflow-auto custom-scrollbar">
     <div v-for="{ count, slug, name } in allPaTerms" :key="slug" class="flex gap-2 items-center">
       <input :id="slug" v-model="selectedTerms" type="checkbox" :value="slug" @change="checkboxChanged" />
-      <label :for="slug" class="cursor-pointer m-0 text-sm flex items-center flex-wrap">
+      <label :for="slug" class="cursor-pointer m-0 flex items-center flex-wrap">
         <span v-html="name" />
         <small v-if="showCount" class="ml-1 text-gray-400 tabular-nums" aria-hidden="true">({{ count || 0 }})</small>
       </label>

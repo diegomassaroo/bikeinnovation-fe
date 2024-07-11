@@ -89,19 +89,19 @@ const refreshOrder = async () => {
       <div v-if="order && !isGuest" class="w-full flex-1">
         <div class="flex justify-between items-center">
           <div>
-            <div class="text-xs text-gray-400 uppercase mb-2">{{ $t('messages.shop.order') }}</div>
+            <div class="text-gray-400 uppercase mb-2">{{ $t('messages.shop.order') }}</div>
             <div class="leading-none">#{{ order.databaseId! }}</div>
           </div>
           <div>
-            <div class="text-xs text-gray-400 uppercase mb-2">{{ $t('messages.general.date') }}</div>
+            <div class="text-gray-400 uppercase mb-2">{{ $t('messages.general.date') }}</div>
             <div class="leading-none">{{ formatDate(order.date!) }}</div>
           </div>
           <div>
-            <div class="text-xs text-gray-400 uppercase mb-2">{{ $t('messages.general.status') }}</div>
+            <div class="text-gray-400 uppercase mb-2">{{ $t('messages.general.status') }}</div>
             <OrderStatusLabel :status="order.status" />
           </div>
           <div>
-            <div class="text-xs text-gray-400 uppercase mb-2">{{ $t('messages.general.paymentMethod') }}</div>
+            <div class="text-gray-400 uppercase mb-2">{{ $t('messages.general.paymentMethod') }}</div>
             <div class="leading-none">{{ order.paymentMethodTitle }}</div>
           </div>
         </div>
@@ -122,8 +122,8 @@ const refreshOrder = async () => {
             <div class="flex-1 leading-tight">
               {{ item.variation ? item.variation?.node?.name : item.product?.node.name! }}
             </div>
-            <div class="text-sm text-gray-600">Qty. {{ item.quantity }}</div>
-            <span class="text-sm font-semibold">{{ formatPrice(item.total!) }}</span>
+            <div class="text-gray-600">Qty. {{ item.quantity }}</div>
+            <span class="font-semibold">{{ formatPrice(item.total!) }}</span>
           </div>
         </div>
 
@@ -156,7 +156,7 @@ const refreshOrder = async () => {
       <div v-else-if="errorMessage" class="w-full text-center flex flex-col items-center justify-center gap-4 flex-1">
         <Icon name="ion:sad-outline" size="96" class="text-gray-700" />
         <h1 class="text-xl font-semibold">Error</h1>
-        <div v-if="errorMessage" class="text-sm text-red-500" v-html="errorMessage" />
+        <div v-if="errorMessage" class="text-red-500" v-html="errorMessage" />
       </div>
     </template>
   </div>

@@ -10,7 +10,7 @@
       stroke="#000"
       stroke-linecap="square"
       stroke-linejoin="square"
-      stroke-width="26"
+      stroke-width="22"
       d="M368 368L144 144M368 144L144 368" />
   </svg>
 </template>

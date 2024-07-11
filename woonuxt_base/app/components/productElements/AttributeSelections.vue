@@ -44,7 +44,7 @@ onMounted(() => {
     <div v-for="(attr, i) in attributes" :key="i" class="flex flex-wrap py-2 relative justify-between">
       <!-- COLOR SWATCHES -->
       <div v-if="attr.name == 'pa_color' || attr.name == 'color'" class="grid gap-2">
-        <div class="text-sm">
+        <div>
           {{ $t('messages.general.color') }}
           <span v-if="activeVariations.length" class="text-gray-400 capitalize">{{ decodeURIComponent(activeVariations[i].value) }}</span>
         </div>
@@ -69,7 +69,7 @@ onMounted(() => {
 
       <!-- DROPDOWN -->
       <div v-else-if="attr.options && attr.options?.length > 8" class="grid gap-2">
-        <div class="text-sm">
+        <div>
           {{ attr.label }} <span v-if="activeVariations.length" class="text-gray-400 capitalize">{{ decodeURIComponent(activeVariations[i].value) }}</span>
         </div>
         <select :id="attr.name" :ref="attr.name" :name="attr.name" required class="border-white shadow" @change="updateAttrs">
@@ -80,7 +80,7 @@ onMounted(() => {
 
       <!-- CHECKBOXES -->
       <div v-else class="grid gap-2">
-        <div class="text-sm">
+        <div>
           {{ attr.label }} <span v-if="activeVariations.length" class="text-gray-400 capitalize">: {{ decodeURIComponent(activeVariations[i].value) }}</span>
         </div>
         <div class="flex gap-2">
@@ -107,11 +107,11 @@ onMounted(() => {
 
 <style lang="postcss">
 .radio-button {
-  @apply border-transparent border-white rounded-lg cursor-pointer outline bg-gray-50 border-2 text-sm text-center outline-2 outline-gray-100 py-1.5 px-3 transition-all text-gray-800 inline-block hover:outline-gray-500;
+  @apply border-transparent border-white rounded-lg cursor-pointer outline bg-gray-50 border-2 text-center outline-2 outline-gray-100 py-1.5 px-3 transition-all text-gray-800 inline-block hover:outline-gray-500;
 }
 
 .color-button {
-  @apply border-transparent border-white cursor-pointer outline bg-gray-50 border-2 rounded-2xl text-sm text-center outline-2 outline-gray-100 transition-all text-gray-800 inline-block hover:outline-gray-500;
+  @apply border-transparent border-white cursor-pointer outline bg-gray-50 border-2 rounded-2xl text-center outline-2 outline-gray-100 transition-all text-gray-800 inline-block hover:outline-gray-500;
   width: 2rem;
   height: 2rem;
 }

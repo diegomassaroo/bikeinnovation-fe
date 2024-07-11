@@ -18,6 +18,6 @@
 }
 
 .account-form label {
-  @apply text-xs mb-1 text-gray-600 inline-block uppercase;
+  @apply mb-1 text-gray-600 inline-block uppercase;
 }
 </style>
