@@ -24,7 +24,7 @@ const { cart, toggleCart, isUpdatingCart } = useCart();
           <CartCard v-for="item in cart.contents?.nodes" :key="item.key" :item />
         </ul>
         <div>
-          <NuxtLink class="block p-2 text-white bg-black hover:bg-green-500 hover:text-black" to="/checkout">
+          <NuxtLink class="p-2 md:p-1.5 h-9 flex items-center text-black bg-green-400 hover:bg-black hover:text-white" to="/checkout">
             <span class="uppercase mr-2">{{ $t('messages.shop.checkout') }}</span>
             <span v-html="cart.total" />
           </NuxtLink>
@@ -32,7 +32,7 @@ const { cart, toggleCart, isUpdatingCart } = useCart();
       </template>
       <!-- Empty Cart Message -->
       <div v-else class="flex flex-col items-center justify-center flex-1 mb-12">
-        <div class="mb-20 text-xl text-gray-300">{{ $t('messages.shop.cartEmpty') }}</div>
+        <div class="text-gray-300">{{ $t('messages.shop.cartEmpty') }}</div>
       </div>
     </ClientOnly>
     <!-- Cart Loading Overlay -->

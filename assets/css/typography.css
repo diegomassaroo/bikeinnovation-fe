@@ -1,22 +1,22 @@
 body, p {
   font-family: 'D0', Arial, sans-serif;
   letter-spacing: .2px;
-  font-size: 13px;
-  line-height: 18px;
+  font-size: 0.75rem;
+  line-height: 1rem;
   @media (--s) {
-    font-size: 13px;
-    line-height: 18px;
+    font-size: 0.75rem;
+    line-height: 1rem;
   }
 }
 
 a {
   font-family: 'D0', Arial, sans-serif;
   letter-spacing: .2px;
-  font-size: 13px;
-  line-height: 18px;
+  font-size: 0.75rem;
+  line-height: 1rem;
   @media (--s) {
-    font-size: 13px;
-    line-height: 18px;
+    font-size: 0.75rem;
+    line-height: 1rem;
   }
 }
 
