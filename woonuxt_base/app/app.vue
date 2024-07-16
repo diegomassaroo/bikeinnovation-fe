@@ -219,10 +219,6 @@ body, p {
   letter-spacing: .2px;
   font-size: 0.75rem;
   line-height: 1rem;
-  @media (--s) {
-    font-size: 0.75rem;
-    line-height: 1rem;
-  }
 }
 
 a {
@@ -230,19 +226,11 @@ a {
   letter-spacing: .2px;
   font-size: 0.75rem;
   line-height: 1rem;
-  @media (--s) {
-    font-size: 0.75rem;
-    line-height: 1rem;
-  }
 }
 
 h3 {
   letter-spacing: .2px;
   font-size: 24px;
   line-height: 30px;
-  @media (--s) {
-    font-size: 24px;
-    line-height: 30px;
-  }
 }
 </style>
