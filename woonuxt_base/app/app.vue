@@ -47,10 +47,23 @@ useHead({
 </template>
 
 <style lang="postcss">
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
 html,
 body {
-  @apply bg-gray-100 text-gray-900;
+  @apply bg-white text-gray-900;
   scroll-behavior: smooth;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+::selection {
+  @apply bg-black text-white;
 }
 
 img {
@@ -199,5 +212,37 @@ img.skeleton {
   animation: skelaton 2000ms infinite cubic-bezier(0.4, 0, 0.2, 1);
   background-image: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
   background-size: 200% 100%;
+}
+
+body, p {
+  font-family: 'D0', Arial, sans-serif;
+  letter-spacing: .2px;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  @media (--s) {
+    font-size: 0.75rem;
+    line-height: 1rem;
+  }
+}
+
+a {
+  font-family: 'D0', Arial, sans-serif;
+  letter-spacing: .2px;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  @media (--s) {
+    font-size: 0.75rem;
+    line-height: 1rem;
+  }
+}
+
+h3 {
+  letter-spacing: .2px;
+  font-size: 24px;
+  line-height: 30px;
+  @media (--s) {
+    font-size: 24px;
+    line-height: 30px;
+  }
 }
 </style>

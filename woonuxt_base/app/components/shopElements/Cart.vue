@@ -32,7 +32,7 @@ const { cart, toggleCart, isUpdatingCart } = useCart();
       </template>
       <!-- Empty Cart Message -->
       <div v-else class="flex flex-col items-center justify-center flex-1 mb-12">
-        <div class="text-gray-300">{{ $t('messages.shop.cartEmpty') }}</div>
+        <div class="uppercase text-gray-300">{{ $t('messages.shop.cartEmpty') }}</div>
       </div>
     </ClientOnly>
     <!-- Cart Loading Overlay -->

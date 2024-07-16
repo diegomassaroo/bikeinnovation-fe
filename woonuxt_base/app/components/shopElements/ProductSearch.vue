@@ -19,13 +19,13 @@ watch(getSearchQuery, (value) => {
       v-model="searchQuery"
       type="text"
       :placeholder="$t('messages.shop.searchProducts')"
-      class="uppercase z-0 inline-flex items-center w-full p-2 md:p-1.5 h-9 flex items-center text-gray-500 border border-gray-300 border-t-0 border-x-0 lg:border-x outline-none rounded-none" />
+      class="uppercase z-0 inline-flex items-center w-full p-2 md:p-1.5 h-9 flex items-center text-gray-500 border border-gray-300 border-t-0 lg:border-t border-x-0 lg:border-x outline-none rounded-none" />
     <span
       v-if="searchQuery"
-      class="absolute z-10 flex items-center gap-1 px-2 py-1 rounded cursor-pointer bg-primary bg-opacity-10 hover:bg-opacity-20 right-2"
+      class="absolute z-10 flex items-center rounded cursor-pointer text-gray-500 hover:text-black right-2 md:right-1.5"
       @click="reset">
       <!-- <span>{{ $t('messages.general.clear') }}</span> -->
-      <Icon name="ion:close-outline" size="18" />
+      
     </span>
   </form>
 </template>

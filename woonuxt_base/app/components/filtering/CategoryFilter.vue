@@ -27,8 +27,6 @@ watch(isFiltersActive, () => {
 const checkboxChanged = () => {
   setFilter('category', selectedTerms.value);
 };
-
-console.log(allCategories);
 </script>
 
 <template>

@@ -7,9 +7,9 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div class="">
+  <div class="p-2 lg:p-1.5">
     <NuxtLink
-      class="uppercase cursor-pointer items-center p-2 text-black bg-white hover:underline focus:z-20"
+      class="uppercase cursor-pointer items-center text-black bg-white hover:underline focus:z-20"
       aria-label="Show filters"
       @click="toggleBodyClass('show-filters')"
       title="Show filters">{{ $t('messages.general.filters') }} +</NuxtLink>

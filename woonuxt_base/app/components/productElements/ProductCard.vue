@@ -6,7 +6,7 @@ const props = defineProps({
 });
 
 const imgWidth = 220;
-const imgHeight = Math.round(imgWidth * 1.125);
+const imgHeight = Math.round(imgWidth * 0.92);
 
 // example: ?filter=pa_color[green,blue],pa_size[large]
 const filterQuery = ref(route.query.filter);
@@ -21,7 +21,7 @@ watch(
   },
 );
 
-const mainImage = computed<string>(() => props.node?.image?.producCardSourceUrl || props.node?.image?.sourceUrl || '/images/placeholder.jpg');
+const mainImage = computed<string>(() => props.node?.image?.sourceUrl || '/images/placeholder.jpg');
 const imagetoDisplay = computed<string>(() => {
   if (paColor.value.length) {
     const activeColorImage = props.node?.variations?.nodes.filter((variation) => {
@@ -36,38 +36,40 @@ const imagetoDisplay = computed<string>(() => {
 </script>
 
 <template>
-  <div class="relative product-card">
-    <NuxtLink :to="`/product/${decodeURIComponent(node.slug)}`" :title="node.name">
+  <NuxtLink :to="`/product/${decodeURIComponent(node.slug)}`" :title="node.name">
+    <div class="grid contents-between gap-2 lg:gap-1.5 product-card p-2 lg:p-1.5">
       <SaleBadge :node="node" class="absolute top-2 right-2" />
       <NuxtImg
         v-if="imagetoDisplay"
-        :width="imgWidth"
-        :height="imgHeight"
         :src="imagetoDisplay"
         :alt="node.image?.altText || node.name"
         :title="node.image?.title || node.name"
-        :loading="index <= 3 ? 'eager' : 'lazy'"
+        :loading="index <= 2 ? 'eager' : 'lazy'"
         placeholder
         placeholder-class="blur-xl" />
-    </NuxtLink>
-    <div class="p-2">
-      <NuxtLink :to="`/product/${decodeURIComponent(node.slug)}`" :title="node.name">
-        <h2 class="mb-2 font-light leading-tight">{{ node.name }}</h2>
-      </NuxtLink>
-      <ProductPrice :sale-price="node.salePrice" :regular-price="node.regularPrice" />
+      <div>
+        <NuxtLink :to="`/product/${decodeURIComponent(node.slug)}`" :title="node.name">
+          <p class="uppercase">{{ node.name }}</p>
+        </NuxtLink>
+        <ProductPrice :sale-price="node.salePrice" :regular-price="node.regularPrice" />
+      </div>
     </div>
-  </div>
+  </NuxtLink>
 </template>
 
 <style lang="postcss">
+.product-card {
+  aspect-ratio: 1;
+}
+
 .product-card img {
-  @apply rounded-lg object-top object-cover w-full;
-  aspect-ratio: 1/1.125;
+  @apply object-center object-cover w-full h-full;
+  overflow: hidden;
 }
 
 .product-card:hover {
-  h2 {
-    @apply text-primary;
+  a {
+    @apply underline;
   }
 }
 </style>

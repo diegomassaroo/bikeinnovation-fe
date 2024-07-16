@@ -6,7 +6,7 @@ const { isShowingSearch } = useSearching();
 
 <template>
   <header class="sticky top-0 bg-white z-50">
-    <div class="p-2 md:px-1.5 md:py-1.5 lg:py-0 flex justify-between gap-2 h-9 border-b lg:border-b-0">
+    <div class="p-2 md:px-1.5 md:py-1.5 lg:py-0 flex justify-between gap-2 h-9 border-b border-gray-300 lg:border-b-0">
       <div class="flex items-center gap-5">
         <Logo class="w-[180px] md:w-[231px]" />
         <TimeDisplay class="hidden sm:flex" />

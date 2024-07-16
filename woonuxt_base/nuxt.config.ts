@@ -18,8 +18,6 @@ export default defineNuxtConfig({
     sharedPrerenderData: true,
   },
 
-  css: ['~/assets/css/index.css'],
-
   plugins: [resolve('./app/plugins/init.ts')],
 
   components: [{ path: resolve('./app/components'), pathPrefix: false }],
