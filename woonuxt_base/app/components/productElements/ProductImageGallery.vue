@@ -88,14 +88,14 @@ watch(pagHeight, (v) => {
           class="w-full h-full object-center object-cover overflow-hidden"
       /></swiper-slide>
     </swiper>
-    <div class="sticky-container paginationFraction w-fit cursor-pointer bottom-0 z-10 absolute left-1/2">
-      <div ref="pagEl" class="sticky-pagination md:sticky bg-white flex p-2 md:p-1.5 h-9 items-center gap-2">
-        <button class="prevEl">←</button>
+    <div class="sticky-container paginationFraction w-fit bottom-0 z-10 absolute left-1/2 md:m-1.5">
+      <div ref="pagEl" class="sticky-pagination md:sticky bg-white flex p-2 md:p-3 h-9 items-center gap-2">
+        <button class="prevEl cursor-pointer">←</button>
         <div>
           <span>{{ currentSlide }}</span
           >/<span>{{ totalSlides }}</span>
         </div>
-        <button class="nextEl">→</button>
+        <button class="nextEl cursor-pointer">→</button>
       </div>
     </div>
     <div class="progressContainer bg-gray-300">
@@ -130,7 +130,7 @@ watch(pagHeight, (v) => {
     height: var(--slider-height);
   }
   .sticky-pagination {
-    top: calc(100vh - var(--pag-height));
+    top: calc(100vh - var(--pag-height) - 6px);
   }
 }
 </style>

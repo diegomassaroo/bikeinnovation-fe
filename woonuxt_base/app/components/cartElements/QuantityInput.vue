@@ -6,8 +6,8 @@
       @click="decrementQuantity"
       type="button"
       class="focus:outline-none disabled:cursor-not-allowed"
-      :disabled="isUpdatingCart || quantity <= 1">
-      <Icon name="ion:remove" size="14" />
+      :disabled="isUpdatingCart || quantity <= 1">–
+      <!-- <Icon name="ion:remove" size="14" /> -->
     </button>
     <input
       v-model.number="quantity"
@@ -22,8 +22,8 @@
       @click="incrementQuantity"
       type="button"
       class="focus:outline-none disabled:cursor-not-allowed disabled:bg-gray-100"
-      :disabled="isUpdatingCart || hasNoMoreStock">
-      <Icon name="ion:add" size="14" />
+      :disabled="isUpdatingCart || hasNoMoreStock">+
+      <!-- <Icon name="ion:add" size="14" /> -->
     </button>
   </div>
 </template>

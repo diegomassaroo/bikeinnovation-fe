@@ -14,18 +14,21 @@ const format = computed(() => [
   },
   { name: product.name },
 ]);
+
+const computedSlug = computed(() => `${String(productCategoryPermallink)}${primaryCategory.value?.slug}`);
 </script>
 
 <template>
-  <div class="flex leading-none text-gray-400 gap-1 items-center">
-    <span>
+  <div class="hover:underline flex leading-none bg-white text-black p-2 md:p-3 h-9 items-center gap-2">
+    <!-- <span>
       <NuxtLink to="/" class="hover:text-primary">{{ $t('messages.general.home') }}</NuxtLink>
       <span> /</span>
-    </span>
-    <span v-for="(link, i) in format" :key="link.name || i">
+    </span> -->
+    <!-- <span v-for="(link, i) in format" :key="link.name || i">
       <NuxtLink v-if="link.slug" :to="decodeURIComponent(link.slug)" class="hover:text-primary">{{ link.name }}</NuxtLink>
       <span v-else class="text-gray-800">{{ link.name }}</span>
       <span v-if="i + 1 < format.length"> /</span>
-    </span>
+    </span> -->
+    <NuxtLink :to="computedSlug">{{ $t('messages.general.backButton') }}</NuxtLink>
   </div>
 </template>

@@ -1,9 +1,10 @@
 <script lang="ts" setup>
-import { StockStatusEnum, ProductTypesEnum, type AddToCartInput } from '#woo';
 import { useElementBounding } from '@vueuse/core';
 import { useCssVar } from '@vueuse/core';
+import { StockStatusEnum, ProductTypesEnum, type AddToCartInput } from '#woo';
 
 const route = useRoute();
+const { storeSettings } = useAppConfig();
 const { arraysEqual, formatArray, checkForVariationTypeOfAny } = useHelpers();
 const { addToCart, isUpdatingCart } = useCart();
 const slug = route.params.slug as string;
@@ -95,6 +96,7 @@ watch(infoHeight, (v) => {
     <SEOHead :info="product" />
 
     <div ref="sliderEl" class="flex flex-col md:flex-row relative md:justify-between">
+      <Breadcrumb :product class="absolute top-0 left-0 z-20 m-2 md:m-1.5" />
       <ProductImageGallery
         v-if="product.image"
         class="w-full h-full overflow-hidden"
@@ -104,10 +106,10 @@ watch(infoHeight, (v) => {
         :activeVariation="activeVariation || {}" />
       <NuxtImg v-else class="w-full h-screen overflow-hidden skeleton" src="/images/placeholder.jpg" :alt="product?.name || 'Product'" />
 
-      <div class="sticky-container md:z-10 block md:absolute bottom-0">
-        <div ref="infoEl" class="sticky-info md:sticky bg-white w-full md:max-w-md p-2 md:px-1.5 md:py-2.5">
+      <div class="sticky-container md:z-10 block md:absolute bottom-0 md:m-1.5">
+        <div ref="infoEl" class="sticky-info md:sticky bg-white w-full md:max-w-md p-2 md:p-3">
           <div class="mb-8">
-            <div class="flex-1">
+            <div>
               <h1 class="uppercase flex flex-wrap items-center gap-2 text-xl">
                 {{ type.name }}
               </h1>
@@ -121,8 +123,8 @@ watch(infoHeight, (v) => {
             <StockStatus :stockStatus @updated="mergeLiveStockStatus" />
           </div>
         </div> -->
-
-          <div class="mb-8">
+        <div class="mb-8">
+            <button class="mb-2 hover:underline">{{ $t('messages.general.more') }} +</button>
             <div class="mb-8" v-html="product.shortDescription || product.description" />
             <div class="grid justify-start">
               <button class="text-left">+ {{ $t('messages.general.shippingReturns') }}</button>
@@ -174,7 +176,7 @@ watch(infoHeight, (v) => {
       </div>
     </div>
     <div v-if="product.related">
-      <div class="text-xl p-2 md:p-1.5 pb-0 md:pb-0">{{ $t('messages.shop.youMayLike') }}</div>
+      <div class="text-xl p-2 md:p-1.5 pb-0 mt-16 md:pb-0">{{ $t('messages.shop.youMayLike') }}</div>
       <ProductRow :products="product.related.nodes" class="grid-cols-2 md:grid-cols-3 2xl:grid-cols-4" />
     </div>
   </main>
@@ -195,7 +197,11 @@ input[type='number']::-webkit-inner-spin-button {
   }
 
   .sticky-info {
-    top: calc(100vh - var(--info-height));
+    top: calc(100vh - var(--info-height) - 6px);
   }
+}
+
+.hide {
+  display: none;
 }
 </style>

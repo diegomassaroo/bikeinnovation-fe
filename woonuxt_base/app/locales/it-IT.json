@@ -40,7 +40,10 @@
       "termsConditions": "Termini e condizioni",
       "sortBy": "Ordina per",
       "assistenceContact": "Assistenza e contatti",
-      "filters": "Filtri"
+      "filters": "Filtri",
+      "backButton": "Indietro",
+      "more": "Scopri di più",
+      "less": "Meno"
     },
     "account": {
       "changePassword": "Cambia password",
