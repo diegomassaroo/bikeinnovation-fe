@@ -1,4 +1,12 @@
-<script setup lang="ts">
+<script setup>
+import { useElementBounding } from '@vueuse/core';
+import { useCssVar } from '@vueuse/core';
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import { Navigation } from 'swiper/modules';
+const modules = [Navigation];
+
 const { fallbackImage } = useHelpers();
 
 const props = defineProps({
@@ -18,13 +26,8 @@ const primaryImage = computed(() => ({
 const imageToShow = ref(primaryImage.value);
 
 const galleryImages = computed(() => {
-  // Add the primary image to the start of the gallery and remove duplicates
   return [primaryImage.value, ...props.gallery.nodes].filter((img, index, self) => index === self.findIndex((t) => t?.databaseId === img?.databaseId));
 });
-
-const changeImage = (image: any) => {
-  if (image) imageToShow.value = image;
-};
 
 watch(
   () => props.activeVariation,
@@ -35,64 +38,99 @@ watch(
     }
   },
 );
+
+const currentSlide = ref(1);
+const totalSlides = ref(galleryImages.value.length);
+const progressBarWidth = ref('0%');
+
+const updateCurrentSlide = (swiper) => {
+  const slideIndex = swiper.realIndex;
+  currentSlide.value = slideIndex + 1;
+  progressBarWidth.value = `${((slideIndex + 1) / galleryImages.value.length) * 100}%`;
+};
+
+onMounted(() => {
+  totalSlides.value = galleryImages.value.length;
+});
+
+const pagEl = ref(null);
+const { height: pagHeight } = useElementBounding(pagEl);
+
+const pagVar = useCssVar('--pag-height');
+
+watch(pagHeight, (v) => {
+  pagVar.value = `${Math.round(v)}px`;
+});
 </script>
 
 <template>
   <div>
     <SaleBadge :node="node" class="absolute text-base top-4 right-4" />
-    <NuxtImg
-      class="rounded-xl object-contain w-full min-w-[350px]"
-      width="640"
-      height="640"
-      :alt="imageToShow.altText || node.name"
-      :title="imageToShow.title || node.name"
-      :src="imageToShow.sourceUrl || fallbackImage"
-      fetchpriority="high"
-      placeholder
-      placeholder-class="blur-xl" />
-    <div v-if="gallery.nodes.length" class="my-4 gallery-images">
-      <NuxtImg
-        v-for="galleryImg in galleryImages"
-        :key="galleryImg.databaseId"
-        class="cursor-pointer rounded-xl"
-        width="640"
-        height="640"
-        :src="galleryImg.sourceUrl"
-        :alt="galleryImg.altText || node.name"
-        :title="galleryImg.title || node.name"
-        @click.native="changeImage(galleryImg)"
-        placeholder
-        placeholder-class="blur-xl"
-        loading="lazy" />
+    <swiper
+      class="swiperContainer"
+      :loop="true"
+      :modules="modules"
+      :navigation="{ prevEl: '.prevEl', nextEl: '.nextEl' }"
+      :slides-per-view="1"
+      :space-between="0"
+      :speed="0"
+      @slideChange="updateCurrentSlide"
+      @swiper="updateCurrentSlide"
+      :draggable="true">
+      <swiper-slide v-for="image in galleryImages" :key="image.databaseId"
+        ><NuxtImg
+          :alt="image.altText || node.name"
+          :title="image.title || node.name"
+          :src="image.sourceUrl || fallbackImage"
+          fetchpriority="high"
+          placeholder
+          placeholder-class="blur-xl"
+          class="w-full h-full object-center object-cover overflow-hidden"
+      /></swiper-slide>
+    </swiper>
+    <div class="sticky-container paginationFraction w-fit cursor-pointer bottom-0 z-10 absolute left-1/2">
+      <div ref="pagEl" class="sticky-pagination md:sticky bg-white flex p-2 md:p-1.5 h-9 items-center gap-2">
+        <button class="prevEl">←</button>
+        <div>
+          <span>{{ currentSlide }}</span
+          >/<span>{{ totalSlides }}</span>
+        </div>
+        <button class="nextEl">→</button>
+      </div>
+    </div>
+    <div class="progressContainer bg-gray-300">
+      <div class="progressBar bg-black h-px" :style="{ width: progressBarWidth }"></div>
     </div>
   </div>
 </template>
 
 <style scoped>
-.gallery-images {
-  display: flex;
-  overflow: auto;
-  gap: 1rem;
+.swiperContainer {
+  aspect-ratio: 5 / 4;
+}
 
-  &::-webkit-scrollbar {
+.paginationFraction {
+  transform: translate(-50%, 0);
+}
+
+@media (max-width: 767px) {
+  .paginationFraction {
     display: none;
   }
 }
 
-.gallery-images img {
-  width: 72px;
-  aspect-ratio: 5/6;
-  object-fit: cover;
-}
-
 @media (min-width: 768px) {
-  .gallery-images {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(72px, 1fr));
-
-    img {
-      width: 100%;
-    }
+  .swiperContainer {
+    aspect-ratio: 16 / 9;
+  }
+  .progressContainer {
+    display: none;
+  }
+  .sticky-container {
+    height: var(--slider-height);
+  }
+  .sticky-pagination {
+    top: calc(100vh - var(--pag-height));
   }
 }
 </style>

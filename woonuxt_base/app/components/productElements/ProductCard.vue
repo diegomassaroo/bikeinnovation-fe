@@ -48,9 +48,7 @@ const imagetoDisplay = computed<string>(() => {
         placeholder
         placeholder-class="blur-xl" />
       <div>
-        <NuxtLink :to="`/product/${decodeURIComponent(node.slug)}`" :title="node.name">
-          <p class="uppercase">{{ node.name }}</p>
-        </NuxtLink>
+        <p class="uppercase">{{ node.name }}</p>
         <ProductPrice :sale-price="node.salePrice" :regular-price="node.regularPrice" />
       </div>
     </div>
@@ -68,7 +66,7 @@ const imagetoDisplay = computed<string>(() => {
 }
 
 .product-card:hover {
-  a {
+  p {
     @apply underline;
   }
 }

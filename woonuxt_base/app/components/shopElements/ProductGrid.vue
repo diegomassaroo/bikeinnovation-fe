@@ -64,7 +64,7 @@ onBeforeUnmount(() => {
   }
 }
 
-@media (min-width: 1520px) {
+@media (min-width: 1536px) {
   .product-grid {
     grid-template-columns: repeat(4, 1fr);
   }

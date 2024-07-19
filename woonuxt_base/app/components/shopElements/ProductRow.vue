@@ -5,7 +5,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <div v-if="products" class="grid gap-8">
+  <div v-if="products" class="grid border-t border-black">
     <ProductCard
       v-for="(node, i) in products"
       :key="node.databaseId"
@@ -13,8 +13,10 @@ const props = defineProps({
       :node="node"
       :index="i"
       :class="{
-        hidden: i === products.length - 1,
-        'lg:block': i === products.length - 1,
+        hidden: i >= products.length - 2,
+        'md:block': i === products.length - 2,
+        'md:hidden': i === products.length - 1,
+        '2xl:block': i === products.length - 1,
       }" />
   </div>
 </template>

@@ -13,7 +13,7 @@ const linkStartsWithWpAdmin = link?.startsWith('/wp-admin') || false;
 <template>
   <DevOnly>
     <ClientOnly>
-      <a
+      <NuxtLink
         v-if="linkStartsWithWpAdmin && wpBase && link"
         :href="formattedLink"
         target="_blank"
@@ -23,7 +23,7 @@ const linkStartsWithWpAdmin = link?.startsWith('/wp-admin') || false;
           <slot />
         </span>
         <Icon name="ion:open-outline" size="14" />
-      </a>
+      </NuxtLink>
     </ClientOnly>
   </DevOnly>
 </template>
