@@ -107,7 +107,7 @@ watch(infoHeight, (v) => {
       <NuxtImg v-else class="w-full h-screen overflow-hidden skeleton" src="/images/placeholder.jpg" :alt="product?.name || 'Product'" />
 
       <div class="sticky-container md:z-10 block md:absolute bottom-0 md:m-1.5">
-        <div ref="infoEl" class="sticky-info md:sticky bg-white w-full md:max-w-md p-2 md:p-3">
+        <div ref="infoEl" class="sticky-info md:sticky bg-white w-full md:max-w-sm p-2 md:p-3">
           <div class="mb-8">
             <div>
               <h1 class="uppercase flex flex-wrap items-center gap-2 text-xl">
@@ -124,13 +124,8 @@ watch(infoHeight, (v) => {
           </div>
         </div> -->
         <div class="mb-8">
-            <button class="mb-2 hover:underline">{{ $t('messages.general.more') }} +</button>
-            <div class="mb-8" v-html="product.shortDescription || product.description" />
-            <div class="grid justify-start">
-              <button class="text-left">+ {{ $t('messages.general.shippingReturns') }}</button>
-              <button class="text-left">+ {{ $t('messages.general.paymentMethod') }}</button>
-              <button class="text-left">+ {{ $t('messages.general.assistenceContact') }}</button>
-            </div>
+          <div class="mb-2" v-html="product.shortDescription" />
+          <Accordion :description="product.description" />
           </div>
 
           <form @submit.prevent="addToCart(selectProductInput)">

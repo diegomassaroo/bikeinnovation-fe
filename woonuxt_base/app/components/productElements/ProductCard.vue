@@ -37,9 +37,10 @@ const imagetoDisplay = computed<string>(() => {
 
 <template>
   <NuxtLink :to="`/product/${decodeURIComponent(node.slug)}`" :title="node.name">
-    <div class="grid contents-between gap-2 lg:gap-1.5 product-card p-2 lg:p-1.5">
+    <div class="flex flex-col contents-between gap-2 lg:gap-1.5 product-card p-2 lg:p-1.5">
       <SaleBadge :node="node" class="absolute top-2 right-2" />
       <NuxtImg
+        class="flex-1"
         v-if="imagetoDisplay"
         :src="imagetoDisplay"
         :alt="node.image?.altText || node.name"
@@ -47,7 +48,7 @@ const imagetoDisplay = computed<string>(() => {
         :loading="index <= 2 ? 'eager' : 'lazy'"
         placeholder
         placeholder-class="blur-xl" />
-      <div>
+      <div class="h-fit">
         <p class="uppercase">{{ node.name }}</p>
         <ProductPrice :sale-price="node.salePrice" :regular-price="node.regularPrice" />
       </div>

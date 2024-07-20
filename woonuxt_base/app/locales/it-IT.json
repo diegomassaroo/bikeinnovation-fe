@@ -43,7 +43,8 @@
       "filters": "Filtri",
       "backButton": "Indietro",
       "more": "Scopri di più",
-      "less": "Meno"
+      "less": "Meno",
+      "details": "Dettagli"
     },
     "account": {
       "changePassword": "Cambia password",

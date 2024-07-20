@@ -19,7 +19,7 @@ const computedSlug = computed(() => `${String(productCategoryPermallink)}${prima
 </script>
 
 <template>
-  <div class="hover:underline flex leading-none bg-white text-black p-2 md:p-3 h-9 items-center gap-2">
+  <div class="flex leading-none bg-white text-black p-2 md:p-3 h-9 items-center gap-2">
     <!-- <span>
       <NuxtLink to="/" class="hover:text-primary">{{ $t('messages.general.home') }}</NuxtLink>
       <span> /</span>
@@ -29,6 +29,6 @@ const computedSlug = computed(() => `${String(productCategoryPermallink)}${prima
       <span v-else class="text-gray-800">{{ link.name }}</span>
       <span v-if="i + 1 < format.length"> /</span>
     </span> -->
-    <NuxtLink :to="computedSlug">{{ $t('messages.general.backButton') }}</NuxtLink>
+    <NuxtLink class="hover:underline" :to="computedSlug">{{ $t('messages.general.backButton') }}</NuxtLink>
   </div>
 </template>

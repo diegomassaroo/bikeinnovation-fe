@@ -27,7 +27,7 @@ function updateOrder(e) {
   <div class="cursor-pointer inline-flex ml-auto -space-x-px isolate p-0 md:p-1.5">
     <select
       @change="updateOrder"
-      class="inline-flex w-fit leading-tight uppercase cursor-pointer text-left md:text-right text-black bg-white border-0 rounded-none border-b border-gray-300 md:border-0 p-0 pl-2 md:pr-5 md:pl-0 h-9 md:h-auto outline-none hover:bg-white hover:underline"
+      class="inline-flex w-fit leading-tight uppercase cursor-pointer text-left md:text-right text-black bg-white border-0 rounded-none border-b border-gray-300 md:border-0 p-0 pl-2 md:pr-4 md:pl-0 h-9 md:h-auto outline-none hover:bg-white hover:underline"
       aria-label="Ordina per">
       <option disabled value="">{{ $t('messages.general.sortBy') }}</option>
       <option value="date">{{ $t('messages.general.latest') }}</option>
@@ -42,7 +42,7 @@ function updateOrder(e) {
 <style scoped>
 select {
   /* background: none; */
-  background-position: 99%;
+  background-position: 103%;
 }
 
 @media (min-width: 1520px) {
