@@ -11,11 +11,18 @@ query getPage($uri: ID!) {
             url
           }
           video
+          poster {
+            node {
+              sourceUrl
+            }
+          }
+          spacer
         }
         ... on PageGroupPageFieldsTextLayout {
           fieldGroupName
           title
           text
+          spacer
         }
         ... on PageGroupPageFieldsTitleLayout {
           fieldGroupName
@@ -25,6 +32,7 @@ query getPage($uri: ID!) {
             title
             url
           }
+          spacer
         }
         ... on PageGroupPageFieldsThumbLayout {
           fieldGroupName
@@ -38,7 +46,7 @@ query getPage($uri: ID!) {
           }
           picture {
             node {
-              srcSet
+              altText
               sourceUrl
               title
             }
@@ -55,7 +63,7 @@ query getPage($uri: ID!) {
             picture {
               node {
                 title
-                srcSet
+                altText
                 sourceUrl
               }
             }
@@ -69,11 +77,12 @@ query getPage($uri: ID!) {
             picture {
               node {
                 sourceUrl
-                srcSet
+                altText
                 title
               }
             }
           }
+          spacer
         }
         ... on PageGroupPageFieldsProductsLayout {
           fieldGroupName
@@ -90,7 +99,7 @@ query getPage($uri: ID!) {
                 name
                 image {
                   title
-                  srcSet
+                  altText
                   sourceUrl
                 }
                 price
@@ -101,6 +110,25 @@ query getPage($uri: ID!) {
               uri
             }
           }
+          product_second {
+            nodes {
+              ... on SimpleProduct {
+                id
+                name
+                image {
+                  title
+                  altText
+                  sourceUrl
+                }
+                price
+              }
+              databaseId
+              id
+              slug
+              uri
+            }
+          }
+          spacer
         }
       }
     }

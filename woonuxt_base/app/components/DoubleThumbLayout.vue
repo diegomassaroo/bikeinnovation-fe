@@ -80,28 +80,59 @@ const props = defineProps({
       },
     },
   },
+  spacer: {
+    type: String,
+    required: true,
+  },
 });
 </script>
 
 <template>
   <section>
-    <h1 v-if="firstThumb.picture.node.sourceUrl">{{ firstThumb.picture.node.sourceUrl }}</h1>
-    <h1 v-if="firstThumb.picture.node.srcSet">{{ firstThumb.picture.node.srcSet }}</h1>
-    <h1 v-if="firstThumb.picture.node.title">{{ firstThumb.picture.node.title }}</h1>
-    <h1 v-if="firstThumb.link.url">{{ firstThumb.link.url }}</h1>
-    <h1 v-if="firstThumb.link.target">{{ firstThumb.link.target }}</h1>
-    <h1 v-if="firstThumb.link.title">{{ firstThumb.link.title }}</h1>
-    <h1 v-if="secondThumb.picture.node.sourceUrl">{{ secondThumb.picture.node.sourceUrl }}</h1>
-    <h1 v-if="secondThumb.picture.node.srcSet">{{ secondThumb.picture.node.srcSet }}</h1>
-    <h1 v-if="secondThumb.picture.node.title">{{ secondThumb.picture.node.title }}</h1>
-    <h1 v-if="secondThumb.link.url">{{ secondThumb.link.url }}</h1>
-    <h1 v-if="secondThumb.link.target">{{ secondThumb.link.target }}</h1>
-    <h1 v-if="secondThumb.link.title">{{ secondThumb.link.title }}</h1>
+    <div class="w-full flex" :class="{ 'mb-24 md:mb-40': spacer.includes('Large') }">
+      <div class="w-full relative" v-if="firstThumb">
+        <NuxtImg
+          class="aspect-vertical w-full"
+          :src="firstThumb.picture.node.sourceUrl"
+          :alt="firstThumb.picture.node.altText"
+          :title="firstThumb.picture.node.title"
+          placeholder
+          placeholder-class="blur-xl" />
+        <div v-if="firstThumb.link" class="bg-white p-2 md:p-3 md:absolute md:left-1/2 md:top-1/2 translate-50 grid gap-1">
+          <div class="content-center grid" v-if="firstThumb.link">
+            <NuxtLink class="text-center uppercase underline hover:no-underline" :to="firstThumb.link.url" :target="firstThumb.link.target">{{ firstThumb.link.title }}</NuxtLink>
+          </div>
+        </div>
+      </div>
+      <div class="aspect-vertical w-full relative" v-if="secondThumb">
+        <NuxtImg
+          class="w-full"
+          :src="secondThumb.picture.node.sourceUrl"
+          :alt="secondThumb.picture.node.altText"
+          :title="secondThumb.picture.node.title"
+          placeholder
+          placeholder-class="blur-xl" />
+        <div v-if="secondThumb.link" class="bg-white p-2 md:p-3 md:absolute md:left-1/2 md:top-1/2 translate-50 grid gap-1">
+          <div class="content-center grid" v-if="secondThumb.link">
+            <NuxtLink class="text-center uppercase underline hover:no-underline" :to="secondThumb.link.url" :target="secondThumb.link.target">{{
+              secondThumb.link.title
+            }}</NuxtLink>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 </template>
 
 <style scoped>
-h1 {
-  color: green;
+.aspect-vertical{
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+
+@media (min-width: 768px) {
+  .translate-50 {
+    transform: translate(-50%, -50%);
+  }
 }
 </style>

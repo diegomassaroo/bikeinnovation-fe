@@ -53,7 +53,7 @@ const salePercentage = computed(() => {
       <div class="inline-flex gap-1 flex-col items-end">
         <QuantityInput :item />
         <div class="text-gray-400 group-hover:text-black flex leading-none items-center">
-          <button class="mr-2 pr-2 border-r" @click="moveToWishList" type="button">Move to Wishlist</button>
+          <button class="mr-2 pr-2 border-r" @click="moveToWishList" type="button">Sposta sulla lista desideri</button>
           <NuxtLink title="Remove Item" aria-label="Remove Item" @click="removeItem" type="button" class="flex items-center gap-1 hover:text-red-500 cursor-pointer">{{
             $t('messages.shop.remove')
           }}</NuxtLink>

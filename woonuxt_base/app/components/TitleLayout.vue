@@ -20,20 +20,26 @@ const props = defineProps({
       default: '',
     },
   },
+  spacer: {
+    type: String,
+    required: true,
+  },
 });
 </script>
 
 <template>
   <section>
-    <h1 v-if="text">{{ text }}</h1>
-    <h1 v-if="link">{{ link.url }}</h1>
-    <h1 v-if="link">{{ link.target }}</h1>
-    <h1 v-if="link">{{ link.title }}</h1>
+    <div class="p-2 md:p-3 grid gap-2 max-w-3xl m-auto" :class="{ 'mb-24 md:mb-40': spacer.includes('Large') }">
+      <p class="text-center text-2xl tracking-s" v-if="text">{{ text }}</p>
+      <div class="grid" v-if="link">
+        <NuxtLink class="text-center content-center uppercase underline hover:no-underline" :to="link.url" :target="link.target">{{ link.title }}</NuxtLink>
+      </div>
+    </div>
   </section>
 </template>
 
 <style scoped>
-h1 {
-  color: pink;
+.tracking-s {
+  letter-spacing: -0.015em;
 }
 </style>

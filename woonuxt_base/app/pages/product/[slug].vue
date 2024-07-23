@@ -108,9 +108,9 @@ watch(infoHeight, (v) => {
 
       <div class="sticky-container md:z-10 block md:absolute bottom-0 md:m-1.5">
         <div ref="infoEl" class="sticky-info md:sticky bg-white w-full md:max-w-sm p-2 md:p-3">
-          <div class="mb-8">
+          <div class="mb-8 gap-2 grid">
             <div>
-              <h1 class="uppercase flex flex-wrap items-center gap-2 text-xl">
+              <h1 class="uppercase flex flex-wrap items-center text-2xl tracking-s">
                 {{ type.name }}
               </h1>
             </div>
@@ -171,7 +171,7 @@ watch(infoHeight, (v) => {
       </div>
     </div>
     <div v-if="product.related">
-      <div class="text-xl p-2 md:p-1.5 pb-0 mt-16 md:pb-0">{{ $t('messages.shop.youMayLike') }}</div>
+      <div class="text-2xl tracking-s p-2 md:p-1.5 pb-0 mt-16 md:pb-0">{{ $t('messages.shop.youMayLike') }}</div>
       <ProductRow :products="product.related.nodes" class="grid-cols-2 md:grid-cols-3 2xl:grid-cols-4" />
     </div>
   </main>
@@ -198,5 +198,9 @@ input[type='number']::-webkit-inner-spin-button {
 
 .hide {
   display: none;
+}
+
+.tracking-s {
+  letter-spacing: -0.015em;
 }
 </style>

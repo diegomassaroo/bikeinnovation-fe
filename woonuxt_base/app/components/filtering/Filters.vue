@@ -135,7 +135,7 @@ const { hideCategories } = defineProps({ hideCategories: { type: Boolean, defaul
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   #filters {
     @apply bg-white h-full w-full sm:w-11/12 transform transition-all ease-in-out bottom-0 -translate-x-[110vw] duration-300 overflow-auto fixed;
     z-index: 60;

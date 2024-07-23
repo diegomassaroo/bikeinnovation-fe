@@ -11,6 +11,10 @@ useSeoMeta({
   twitterCard: `summary_large_image`,
 });
 
+useHead({
+  titleTemplate: `${siteName}`,
+});
+
 const layoutComponents = new Map([
   ['PageGroupPageFieldsCoverLayout', resolveComponent('CoverLayout')],
   ['PageGroupPageFieldsTextLayout', resolveComponent('TextLayout')],
