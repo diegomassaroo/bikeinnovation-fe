@@ -76,7 +76,7 @@ export default defineNuxtConfig({
     autoImport: true,
     local: [
       {
-        src: "/fonts/ABCDiatypeSemi-Mono-Regular-Trial.woff2",
+        src: "/fonts/ABCDiatypeSemi-Mono-Regular.woff2",
         family: "D0",
         weight: "normal",
         display: "swap",

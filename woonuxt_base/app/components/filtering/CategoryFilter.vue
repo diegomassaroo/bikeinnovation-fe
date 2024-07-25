@@ -36,7 +36,7 @@ const checkboxChanged = () => {
       <Icon name="ion:chevron-down-outline" class="transform" :class="isOpen ? 'rotate-180' : ''" />
     </div> -->
     <div class="p-2 pb-0 md:p-1.5 md:pb-0">
-      <span class="text-2xl tracking-s">{{ allCategories[0].name }}</span>
+      <span class="text-xl md:text-2xl tracking-s">{{ allCategories[0].name }}</span>
     </div>
     <div v-show="isOpen" class="p-2 md:p-1.5 max-h-[240px] flex gap-2 overflow-auto custom-scrollbar">
       <div v-for="color in allCategories.slice(1)" :key="color.slug" class="flex gap-2">

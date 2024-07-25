@@ -4,21 +4,21 @@ const linkTitle = computed<string>(() => viewer.value?.username || 'Sign In');
 </script>
 
 <template>
-  <NuxtLink to="/my-account" :title="linkTitle" class="hidden sm:inline-flex aspect-square items-center">
+  <NuxtLink to="/my-account" :title="linkTitle" class="hidden md:inline-flex aspect-square items-center">
     <Transition name="pop-in" mode="out-in">
       <span v-if="avatar" class="relative avatar">
-        <img :src="avatar" class="rounded-full transform scale-125 shadow-md overflow-hidden border border-white my-auto" width="22" height="22" :alt="linkTitle" />
+        <p class="uppercase hover:underline">{{ $t('messages.account.personalAccount') }}</p>
+        <!-- <img :src="avatar" class="rounded-full transform scale-125 shadow-md overflow-hidden border border-white my-auto" width="22" height="22" :alt="linkTitle" /> -->
         <div class="account-dropdown">
-          <NuxtLink to="/wishlist" class="hover:bg-gray-100"><Icon name="ion:heart-outline" size="16" /><span>Wishlist</span></NuxtLink>
-          <NuxtLink to="/my-account" class="hover:bg-gray-100"><Icon name="ion:person-outline" size="16" /><span>My Account</span></NuxtLink>
-          <button class="text-red-600 hover:bg-red-50" @click.prevent="logoutUser">
+          <NuxtLink to="/wishlist" class="uppercase hover:bg-gray-100"><span>{{ $t('messages.shop.wishlist') }}</span></NuxtLink>
+          <NuxtLink to="/my-account" class="uppercase hover:bg-gray-100"><span>{{ $t('messages.account.myAccount') }}</span></NuxtLink>
+          <button class="uppercase text-red-600 hover:bg-red-50" @click.prevent="logoutUser">
             <LoadingIcon v-if="isPending" size="16" />
-            <Icon v-else name="ion:log-out-outline" size="16" />
-            <span>Logout</span>
+            <span>{{ $t('messages.account.logout') }}</span>
           </button>
         </div>
       </span>
-      <Icon v-else name="ion:person-outline" size="22" class="border border-transparent" />
+      <span v-else class="uppercase hover:underline">{{ $t('messages.account.personalAccount') }}</span>
     </Transition>
   </NuxtLink>
 </template>

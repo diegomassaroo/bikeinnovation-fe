@@ -1,5 +1,5 @@
 <script setup>
-const { data: pageData } = await useAsyncGql('getPage', { uri: '/terms-conditions' });
+const { data: pageData } = await useAsyncGql('getPage', { uri: '/spedizione-e-resi' });
 
 const layoutComponents = new Map([
   ['PageGroupPageFieldsTextLayout', resolveComponent('TextLayout')],

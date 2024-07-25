@@ -36,7 +36,7 @@
       "customerService": "Servizio clienti",
       "processing": "Elaborazione",
       "shippingReturns": "Spedizione e resi",
-      "privacyPolicy": "Privacy Policy",
+      "privacyPolicy": "Informativa privacy",
       "termsConditions": "Termini e condizioni",
       "sortBy": "Ordina per",
       "assistenceContact": "Assistenza e contatti",
@@ -70,7 +70,8 @@
       "updating": "Aggiornamento",
       "updateDetails": "Aggiorna dettagli",
       "updateSuccess": "Aggiornato con successo",
-      "failed": "Aggiornamento fallito"
+      "failed": "Aggiornamento fallito",
+      "personalAccount": "Account"
     },
     "shop": {
       "shopByCategory": "Acquista per categoria",
@@ -127,7 +128,8 @@
       "couponCode": "Codice coupon",
       "bikes": "Biciclette",
       "componentsAndAccessories": "Componenti e accessori",
-      "clothing": "Abbigliamento"
+      "clothing": "Abbigliamento",
+      "shippingTotal": "Costi di spedizione"
     },
     "billing": {
       "billing": "Fatturazione",

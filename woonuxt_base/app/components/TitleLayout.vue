@@ -21,7 +21,7 @@ const props = defineProps({
     },
   },
   spacer: {
-    type: String,
+    type: Array,
     required: true,
   },
 });
@@ -30,7 +30,7 @@ const props = defineProps({
 <template>
   <section>
     <div class="p-2 md:p-3 grid gap-2 max-w-3xl m-auto" :class="{ 'mb-24 md:mb-40': spacer.includes('Large') }">
-      <p class="text-center text-2xl tracking-s" v-if="text">{{ text }}</p>
+      <p class="text-center text-xl md:text-2xl tracking-s" v-if="text">{{ text }}</p>
       <div class="grid" v-if="link">
         <NuxtLink class="text-center content-center uppercase underline hover:no-underline" :to="link.url" :target="link.target">{{ link.title }}</NuxtLink>
       </div>

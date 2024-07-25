@@ -78,7 +78,7 @@ useSeoMeta({
         <div class="grid w-full max-w-2xl gap-8 checkout-form md:flex-1">
           <!-- Customer details -->
           <div v-if="!viewer">
-            <h2 class="w-full mb-2 text-2xl font-semibold leading-none">Contact Information</h2>
+            <h2 class="w-full mb-2 text-xl md:text-2xl font-semibold leading-none">Contact Information</h2>
             <p class="mt-1 text-gray-500">Already have an account? <NuxtLink href="/my-account" class="text-primary text-semibold">Log in</NuxtLink>.</p>
             <div class="w-full mt-4">
               <label for="email">{{ $t('messages.billing.email') }}</label>
@@ -112,7 +112,7 @@ useSeoMeta({
           </div>
 
           <div>
-            <h2 class="w-full mb-3 text-2xl font-semibold">{{ $t('messages.billing.billingDetails') }}</h2>
+            <h2 class="w-full mb-3 text-xl md:text-2xl font-semibold">{{ $t('messages.billing.billingDetails') }}</h2>
             <BillingDetails v-model="customer.billing" :sameAsShippingAddress="orderInput.shipToDifferentAddress" />
           </div>
 

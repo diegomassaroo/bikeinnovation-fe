@@ -25,11 +25,11 @@ const props = defineProps({
     required: true,
   },
   size: {
-    type: String,
+    type: Array,
     required: true,
   },
   spacer: {
-    type: String,
+    type: Array,
     required: true,
   },
   link: {

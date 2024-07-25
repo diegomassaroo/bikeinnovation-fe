@@ -81,7 +81,7 @@ const props = defineProps({
     },
   },
   spacer: {
-    type: String,
+    type: Array,
     required: true,
   },
 });

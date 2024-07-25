@@ -10,6 +10,12 @@ const isRouteActive = (uri) => {
   <nav>
     <NuxtLink
       :class="{'route-link-active' : isRouteActive('/categoria-prodotto/biciclette')}"
+      class="uppercase border-b border-gray-300 p-2 md:p-1.5 h-9 flex items-center lg:hidden"
+      to="/my-account"
+      >{{ $t('messages.account.personalAccount') }}</NuxtLink
+    >
+    <NuxtLink
+      :class="{'route-link-active' : isRouteActive('/categoria-prodotto/biciclette')}"
       class="uppercase border-b border-gray-300 lg:border-0 p-2 md:p-1.5 h-9 lg:h-auto flex items-center lg:p-0"
       to="/categoria-prodotto/biciclette"
       >{{ $t('messages.shop.bikes') }}</NuxtLink

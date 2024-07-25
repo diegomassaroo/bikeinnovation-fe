@@ -19,6 +19,7 @@ const { isShowingSearch } = useSearching();
           <MenuTrigger />
         </div>
         <div class="flex gap-2 items-center">
+          <SignInLink />
           <CartTrigger />
         </div>
       </div>

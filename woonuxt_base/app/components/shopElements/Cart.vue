@@ -23,10 +23,16 @@ const { cart, toggleCart, isUpdatingCart } = useCart();
         <ul class="flex flex-col flex-1 overflow-y-scroll">
           <CartCard v-for="item in cart.contents?.nodes" :key="item.key" :item />
         </ul>
+        <!-- <div class="border-t border-gray-300">
+          <div class="p-2 md:p-1.5 h-9 justify-between items-center flex text-black">
+            <span class="uppercase">{{ $t('messages.shop.shippingTotal') }}</span>
+            <span v-html="cart.shippingTotal" />
+          </div>
+        </div> -->
         <div>
-          <NuxtLink class="p-2 md:p-1.5 h-9 flex items-center text-black bg-green-400 hover:bg-black hover:text-white" to="/checkout">
-            <span class="uppercase mr-2">{{ $t('messages.shop.checkout') }}</span>
-            <span v-html="cart.total" />
+          <NuxtLink class="p-2 md:p-1.5 h-9 flex items-center justify-between text-black bg-green-400 hover:bg-black hover:text-white" to="/checkout">
+            <span class="uppercase pr-2">{{ $t('messages.shop.checkout') }}</span>
+            <span v-html="cart.subtotal" />
           </NuxtLink>
         </div>
       </template>

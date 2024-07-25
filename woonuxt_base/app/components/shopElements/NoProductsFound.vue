@@ -13,7 +13,7 @@ const clearAll = () => {
   <div class="w-full my-16 lg:my-24">
     <div class="flex flex-col items-center justify-center w-full text-center">
       <Icon name="ion:sad-outline" size="156" class="opacity-25 mb-10" />
-      <h2 class="text-2xl">Nessun prodotto trovato</h2>
+      <h2 class="text-xl md:text-2xl">Nessun prodotto trovato</h2>
       <p class="mt-2 max-w-xs">
         <slot>Prova a modificare la ricerca o il filtro per trovare ciò che stai cercando.</slot>
       </p>

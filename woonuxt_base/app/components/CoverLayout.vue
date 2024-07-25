@@ -37,13 +37,10 @@ const props = defineProps({
     },
   },
   spacer: {
-    type: String,
+    type: Array,
     required: true,
   },
 });
-
-console.log(props.spacer);
-
 </script>
 
 <template>

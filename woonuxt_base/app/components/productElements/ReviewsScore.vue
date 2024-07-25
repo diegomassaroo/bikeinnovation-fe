@@ -65,8 +65,8 @@ async function addComment() {
 
 <template>
   <div>
-    <h4 v-if="reviews.edges.length" class="font-semibold text-2xl text-gray-900">{{ $t('messages.shop.customerReviews') }}</h4>
-    <h4 v-else class="font-semibold text-2xl text-gray-900">{{ $t('messages.shop.noReviews') }}</h4>
+    <h4 v-if="reviews.edges.length" class="font-semibold text-xl md:text-2xl text-gray-900">{{ $t('messages.shop.customerReviews') }}</h4>
+    <h4 v-else class="font-semibold text-xl md:text-2xl text-gray-900">{{ $t('messages.shop.noReviews') }}</h4>
     <div v-if="reviews.edges.length" class="my-2">
       <StarRating :rating="reviews.averageRating" :hide-count="true" class="mr-2" />
       <span> {{ $t('messages.general.basedOn') }} {{ reviews.edges.length }} {{ $t('messages.shop.reviews') }}</span>
