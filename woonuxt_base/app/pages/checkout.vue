@@ -67,24 +67,28 @@ useSeoMeta({
 </script>
 
 <template>
-  <div class="flex flex-col min-h-[600px]">
+  <div class="flex flex-col min-h-[680px]">
     <LoadingIcon v-if="!cart" class="m-auto" />
     <template v-else>
-      <div v-if="cart.isEmpty" class="flex flex-col items-center justify-center flex-1 mb-12">
-        <div class="mb-20 text-xl text-gray-300">{{ $t('messages.shop.cartEmpty') }}</div>
+      <div v-if="cart.isEmpty" class="flex flex-col items-center justify-center flex-1">
+        <div class="text-xl md:text-2xl tracking-s text-gray-300">{{ $t('messages.shop.cartEmpty') }}</div>
       </div>
 
-      <form v-else class="container flex flex-wrap items-start gap-8 my-16 justify-evenly lg:gap-20" @submit.prevent="payNow">
-        <div class="grid w-full max-w-2xl gap-8 checkout-form md:flex-1">
+      <form v-else class="flex flex-wrap items-start gap-12 mt-12 my-24 lg:mt-24 lg:mb-40 justify-between p-2 md:p-3" @submit.prevent="payNow">
+        <div class="grid w-full gap-12 lg:gap-24 checkout-form lg:flex-1">
           <!-- Customer details -->
-          <div v-if="!viewer">
-            <h2 class="w-full mb-2 text-xl md:text-2xl font-semibold leading-none">Contact Information</h2>
-            <p class="mt-1 text-gray-500">Already have an account? <NuxtLink href="/my-account" class="text-primary text-semibold">Log in</NuxtLink>.</p>
-            <div class="w-full mt-4">
-              <label for="email">{{ $t('messages.billing.email') }}</label>
+          <div v-if="!viewer" class="gap-3.5 lg:gap-5 grid">
+            <div class="gap-1 grid">
+              <h2 class="w-full text-xl md:text-2xl tracking-s md:text-2xl leading-none">{{ $t('messages.billing.contactInformation') }}</h2>
+              <p class="text-gray-500">
+                {{ $t('messages.account.hasAccount') }}
+                <NuxtLink href="/my-account" class="text-black underline hover:no-underline">{{ $t('messages.account.accountLogin') }}</NuxtLink>
+              </p>
+            </div>
+            <div class="w-full">
               <input
                 v-model="customer.billing.email"
-                placeholder="johndoe@email.com"
+                placeholder="Email"
                 type="email"
                 name="email"
                 :class="{ 'has-error': isInvalidEmail }"
@@ -96,11 +100,11 @@ useSeoMeta({
               </Transition>
             </div>
             <template v-if="orderInput.createAccount">
-              <div class="w-full mt-4">
+              <div class="w-full">
                 <label for="username">{{ $t('messages.account.username') }}</label>
                 <input v-model="orderInput.username" placeholder="Username" type="text" name="username" required />
               </div>
-              <div class="w-full my-2" v-if="orderInput.createAccount">
+              <div class="w-full" v-if="orderInput.createAccount">
                 <label for="email">{{ $t('messages.account.password') }}</label>
                 <PasswordInput id="password" class="my-2" v-model="orderInput.password" placeholder="Password" :required="true" />
               </div>
@@ -111,44 +115,44 @@ useSeoMeta({
             </div>
           </div>
 
-          <div>
-            <h2 class="w-full mb-3 text-xl md:text-2xl font-semibold">{{ $t('messages.billing.billingDetails') }}</h2>
+          <div class="gap-5 grid">
+            <h2 class="w-full mb-3 text-xl md:text-2xl tracking-s md:text-2xl">{{ $t('messages.billing.billingDetails') }}</h2>
             <BillingDetails v-model="customer.billing" :sameAsShippingAddress="orderInput.shipToDifferentAddress" />
+
+            <label for="shipToDifferentAddress" class="flex items-center gap-2">
+              <span>{{ $t('messages.billing.differentAddress') }}</span>
+              <input id="shipToDifferentAddress" v-model="orderInput.shipToDifferentAddress" type="checkbox" name="shipToDifferentAddress" />
+            </label>
+
+            <Transition name="scale-y" mode="out-in">
+              <div v-show="orderInput.shipToDifferentAddress">
+                <h2 class="mb-4 text-xl md:text-2xl tracking-s">{{ $t('messages.general.shippingDetails') }}</h2>
+                <ShippingDetails v-model="customer.shipping" />
+              </div>
+            </Transition>
           </div>
-
-          <label for="shipToDifferentAddress" class="flex items-center gap-2">
-            <span>{{ $t('messages.billing.differentAddress') }}</span>
-            <input id="shipToDifferentAddress" v-model="orderInput.shipToDifferentAddress" type="checkbox" name="shipToDifferentAddress" />
-          </label>
-
-          <Transition name="scale-y" mode="out-in">
-            <div v-show="orderInput.shipToDifferentAddress">
-              <h2 class="mb-4 text-xl font-semibold">{{ $t('messages.general.shippingDetails') }}</h2>
-              <ShippingDetails v-model="customer.shipping" />
-            </div>
-          </Transition>
 
           <!-- Shipping methods -->
           <div v-if="cart.availableShippingMethods.length">
-            <h3 class="mb-4 text-xl font-semibold">{{ $t('messages.general.shippingSelect') }}</h3>
+            <h3 class="mb-2 text-xl md:text-2xl tracking-s">{{ $t('messages.general.shippingSelect') }}</h3>
             <ShippingOptions :options="cart.availableShippingMethods[0].rates" :active-option="cart.chosenShippingMethods[0]" />
           </div>
 
           <!-- Pay methods -->
-          <div v-if="paymentGateways.nodes.length" class="mt-2 col-span-full">
-            <h2 class="mb-4 text-xl font-semibold">{{ $t('messages.billing.paymentOptions') }}</h2>
-            <PaymentOptions v-model="orderInput.paymentMethod" class="mb-4" :paymentGateways />
+          <div v-if="paymentGateways.nodes.length" class="col-span-full">
+            <h2 class="mb-2 text-xl md:text-2xl tracking-s">{{ $t('messages.billing.paymentOptions') }}</h2>
+            <PaymentOptions v-model="orderInput.paymentMethod" class="mb-2" :paymentGateways />
             <StripeElement v-if="stripe" v-show="orderInput.paymentMethod.id == 'stripe'" :stripe @updateElement="handleStripeElement" />
           </div>
 
           <!-- Order note -->
-          <div>
-            <h2 class="mb-4 text-xl font-semibold">{{ $t('messages.shop.orderNote') }} ({{ $t('messages.general.optional') }})</h2>
+          <div class="gap-1 grid">
+            <h2 class="text-xl md:text-2xl tracking-s">{{ $t('messages.shop.orderNote') }} ({{ $t('messages.general.optional') }})</h2>
             <textarea
               id="order-note"
               v-model="orderInput.customerNote"
               name="order-note"
-              class="w-full"
+              class="w-full min-h-24"
               rows="4"
               :placeholder="$t('messages.shop.orderNotePlaceholder')"></textarea>
           </div>
@@ -156,7 +160,7 @@ useSeoMeta({
 
         <OrderSummary>
           <button
-            class="flex items-center justify-center w-full gap-3 p-3 mt-4 font-semibold text-center text-white rounded-lg shadow-md bg-primary hover:bg-primary-dark disabled:cursor-not-allowed disabled:bg-gray-400"
+            class="flex bg-black hover:bg-white hover:text-black w-full border border-black items-center justify-center p-2 md:p-1.5 gap-3 text-center text-white disabled:cursor-not-allowed disabled:bg-gray-400"
             :disabled="isCheckoutDisabled">
             {{ buttonText }}<LoadingIcon v-if="isProcessingOrder" color="#fff" size="18" />
           </button>
@@ -174,7 +178,61 @@ useSeoMeta({
 .checkout-form textarea,
 .checkout-form select,
 .checkout-form .StripeElement {
-  @apply bg-white border rounded-md outline-none border-gray-300 shadow-sm w-full py-2 px-4;
+  @apply bg-white border h-9 rounded-none outline-none border-gray-300 w-full p-2;
+}
+
+input[type='checkbox'] {
+  @apply bg-white border rounded-lg cursor-pointer outline-none border-black w-full p-3 transition-all duration-150 appearance-none;
+
+  width: 1em;
+  height: 1em;
+  position: relative;
+  cursor: pointer;
+  border-radius: 10px;
+  padding: 0;
+}
+
+input[type='checkbox']:after,
+input[type='radio']:after {
+  display: block;
+  opacity: 0;
+  transition: all 250ms cubic-bezier(0.65, -0.43, 0.4, 1.71);
+}
+
+input[type='checkbox']:after {
+  width: 5px;
+  height: 9px;
+  border: 2px solid #fff;
+  border-top: 0;
+  border-left: 0;
+  transform: rotate(0deg) translate(-1px, 1px) scale(0.75);
+  position: absolute;
+  top: 3px;
+  left: 6.5px;
+}
+
+input[type='radio']:after {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  transform: scale(0);
+  position: absolute;
+  background: #fff;
+  top: 4px;
+  left: 4px;
+}
+
+input[type='checkbox']:checked:after {
+  @apply cursor-pointer text-gray-600 hover:text-primary;
+}
+
+input[type='checkbox']:checked {
+  @apply bg-primary border-0;
+}
+
+input[type='checkbox']:checked:after {
+  opacity: 1;
+  transform: rotate(45deg) translate(-1px, 1px) scale(1);
 }
 
 .checkout-form input.has-error,
@@ -183,10 +241,14 @@ useSeoMeta({
 }
 
 .checkout-form label {
-  @apply my-1.5 text-gray-600 uppercase;
+  @apply mb-1 text-gray-500 uppercase inline-flex;
 }
 
 .checkout-form .StripeElement {
-  padding: 1rem 0.75rem;
+  /* padding: 1rem 0.75rem; */
+}
+
+.tracking-s {
+  letter-spacing: -0.015em;
 }
 </style>

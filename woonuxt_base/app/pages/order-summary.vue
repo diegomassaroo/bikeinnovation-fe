@@ -57,25 +57,25 @@ const refreshOrder = async () => {
 </script>
 
 <template>
-  <div class="w-full min-h-[600px] flex items-center p-8 text-gray-800 md:bg-white md:rounded-xl md:mx-auto md:shadow-lg md:my-24 md:mt-8 md:max-w-3xl md:p-16 flex-col">
+  <div class="w-full min-h-[680px] border border-black flex items-center p-8 text-gray-800 md:bg-white md:mx-auto md:my-24 md:mt-8 md:max-w-3xl md:p-16 flex-col">
     <LoadingIcon v-if="!isLoaded" class="flex-1" />
     <template v-else>
       <div class="w-full">
         <template v-if="isSummaryPage">
           <div class="flex gap-4 items-center">
-            <NuxtLink to="/my-account?tab=orders" class="border rounded-md p-2 inline-flex items-center justify-center" title="Back to orders" aria-label="Back to orders">
+            <NuxtLink to="/my-account?tab=orders" class="border border-black p-2 inline-flex items-center justify-center" title="Back to orders" aria-label="Back to orders">
               <Icon name="ion:chevron-back-outline" />
             </NuxtLink>
-            <h1 class="text-xl font-semibold">{{ $t('messages.shop.orderSummary') }}</h1>
+            <h1 class="text-xl md:text-2xl tracking-s">{{ $t('messages.shop.orderSummary') }}</h1>
           </div>
         </template>
         <template v-else-if="isCheckoutPage">
           <div class="flex w-full items-center justify-between mb-2">
-            <h1 class="text-xl font-semibold">{{ $t('messages.shop.orderReceived') }}</h1>
+            <h1 class="text-xl md:text-2xl tracking-s">{{ $t('messages.shop.orderReceived') }}</h1>
             <button
               v-if="showRefreshButton"
               type="button"
-              class="border rounded-md p-2 inline-flex items-center justify-center bg-white"
+              class="border border-black p-2 inline-flex items-center justify-center bg-white"
               title="Refresh order"
               aria-label="Refresh order"
               @click="refreshOrder">
@@ -84,35 +84,35 @@ const refreshOrder = async () => {
           </div>
           <p>{{ $t('messages.shop.orderThanks') }}</p>
         </template>
-        <hr class="my-8" />
+        <hr class="my-8 border-black" />
       </div>
       <div v-if="order && !isGuest" class="w-full flex-1">
         <div class="flex justify-between items-center">
           <div>
-            <div class="text-gray-400 uppercase mb-2">{{ $t('messages.shop.order') }}</div>
+            <div class="text-black uppercase mb-2">{{ $t('messages.shop.order') }}</div>
             <div class="leading-none">#{{ order.databaseId! }}</div>
           </div>
           <div>
-            <div class="text-gray-400 uppercase mb-2">{{ $t('messages.general.date') }}</div>
+            <div class="text-black uppercase mb-2">{{ $t('messages.general.date') }}</div>
             <div class="leading-none">{{ formatDate(order.date!) }}</div>
           </div>
           <div>
-            <div class="text-gray-400 uppercase mb-2">{{ $t('messages.general.status') }}</div>
+            <div class="text-black uppercase mb-2">{{ $t('messages.general.status') }}</div>
             <OrderStatusLabel :status="order.status" />
           </div>
           <div>
-            <div class="text-gray-400 uppercase mb-2">{{ $t('messages.general.paymentMethod') }}</div>
+            <div class="text-black uppercase mb-2">{{ $t('messages.general.paymentMethod') }}</div>
             <div class="leading-none">{{ order.paymentMethodTitle }}</div>
           </div>
         </div>
 
-        <hr class="my-8" />
+        <hr class="my-8 border-black" />
 
         <div class="grid gap-2">
           <div v-if="order.lineItems" v-for="item in order.lineItems.nodes" :key="item.product?.databaseId!" class="flex items-center justify-between gap-8">
             <img
               v-if="item.product?.node"
-              class="w-16 h-16 rounded-xl"
+              class="w-16 h-16"
               :src="item.variation?.node?.image?.sourceUrl || item.product.node?.image?.sourceUrl || '/images/placeholder.png'"
               :alt="item.variation?.node?.image?.altText || item.product.node?.image?.altText || 'Product image'"
               :title="item.variation?.node?.image?.title || item.product.node?.image?.title || 'Product image'"
@@ -122,12 +122,12 @@ const refreshOrder = async () => {
             <div class="flex-1 leading-tight">
               {{ item.variation ? item.variation?.node?.name : item.product?.node.name! }}
             </div>
-            <div class="text-gray-600">Qty. {{ item.quantity }}</div>
+            <div class="text-black">Qty. {{ item.quantity }}</div>
             <span class="font-semibold">{{ formatPrice(item.total!) }}</span>
           </div>
         </div>
 
-        <hr class="my-8" />
+        <hr class="my-8 border-black" />
 
         <div>
           <div class="flex justify-between">
@@ -146,18 +146,24 @@ const refreshOrder = async () => {
             <span>{{ $t('messages.shop.discount') }}</span>
             <span>- {{ order.discountTotal }}</span>
           </div>
-          <hr class="my-8" />
+          <hr class="my-8 border-black" />
           <div class="flex justify-between">
             <span class>{{ $t('messages.shop.total') }}</span>
-            <span class="font-semibold">{{ order.total }}</span>
+            <span class="">{{ order.total }}</span>
           </div>
         </div>
       </div>
       <div v-else-if="errorMessage" class="w-full text-center flex flex-col items-center justify-center gap-4 flex-1">
-        <Icon name="ion:sad-outline" size="96" class="text-gray-700" />
-        <h1 class="text-xl font-semibold">Error</h1>
+        <Icon name="ion:sad-outline" size="96" class="text-black" />
+        <h1 class="text-xl md:text-2xl tracking-s">Error</h1>
         <div v-if="errorMessage" class="text-red-500" v-html="errorMessage" />
       </div>
     </template>
   </div>
 </template>
+
+<style scoped>
+.tracking-s {
+  letter-spacing: -0.015em;
+}
+</style>

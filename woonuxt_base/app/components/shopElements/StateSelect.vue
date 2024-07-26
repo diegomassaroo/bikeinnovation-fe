@@ -35,11 +35,11 @@ onMounted(() => {
       {{ state.name }}
     </option>
   </select>
-  <input v-else type="text" @change="select" placeholder="State" />
+  <input v-else type="text" @change="select" placeholder="Provincia" />
 </template>
 
 <style scoped lang="postcss">
-select {
-  height: 42px;
+.account-form select, select {
+  @apply bg-white border-b h-9 rounded-none outline-none border-gray-300 w-full p-2;
 }
 </style>

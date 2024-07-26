@@ -32,9 +32,9 @@ watch(
       <MobileMenu v-if="isShowingMobileMenu" />
     </Transition>
 
-    <div class="flex flex-col items-center justify-center flex-1 gap-4 min-h-[500px]">
-      <h1 class="text-6xl font-bold">Error {{ error?.statusCode || '404' }}</h1>
-      <p v-if="error?.message" class="text-lg">{{ error.message }}</p>
+    <div class="flex flex-col items-center justify-center flex-1 gap-1 min-h-[500px]">
+      <h1 class="text-xl tracking-s md:text-2xl font-bold">Error {{ error?.statusCode || '404' }}</h1>
+      <p v-if="error?.message" class="">{{ error.message }}</p>
     </div>
 
     <Transition name="fade">
@@ -44,3 +44,9 @@ watch(
     <AppFooter />
   </div>
 </template>
+
+<style scoped>
+.tracking-s {
+  letter-spacing: -0.015em;
+}
+</style>

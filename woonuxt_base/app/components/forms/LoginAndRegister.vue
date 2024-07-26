@@ -1,16 +1,15 @@
 <template>
-  <div class="max-w-lg mx-auto my-16 min-h-[600px] lg:my-24">
+  <div class="max-w-lg mx-auto my-16 min-h-[680px] lg:my-24">
     <div class="flex flex-col items-center">
-      <Logo class="mb-6 scale-125" />
-      <h1 class="text-xl font-semibold lg:text-3xl">{{ $t('messages.account.loginToAccount') }}</h1>
+      <h1 class="text-xl tracking-s md:text-2xl">{{ $t('messages.account.loginToAccount') }}</h1>
       <div v-if="formView == 'login'" class="my-2 text-center">
         {{ $t('messages.account.noAccount') }}
-        <NuxtLink class="font-semibold cursor-pointer text-primary" @click="formView = 'register'">{{ $t('messages.account.accountRegister') }}</NuxtLink
+        <NuxtLink class="cursor-pointer text-primary" @click="formView = 'register'">{{ $t('messages.account.accountRegister') }}</NuxtLink
         >.
       </div>
       <div v-if="formView == 'register'" class="my-2 text-center">
         {{ $t('messages.account.hasAccount') }}
-        <NuxtLink class="font-semibold cursor-pointer text-primary" @click="formView = 'login'">{{ $t('messages.general.please') }} {{ $t('messages.account.accountLogin') }}</NuxtLink
+        <NuxtLink class="cursor-pointer text-primary" @click="formView = 'login'">{{ $t('messages.general.please') }} {{ $t('messages.account.accountLogin') }}</NuxtLink
         >.
       </div>
     </div>
@@ -124,5 +123,9 @@ button {
 
 form button {
   @apply rounded-lg font-bold bg-gray-800 text-white py-3 px-8 hover:bg-gray-800;
+}
+
+.tracking-s {
+  letter-spacing: -0.015em;
 }
 </style>

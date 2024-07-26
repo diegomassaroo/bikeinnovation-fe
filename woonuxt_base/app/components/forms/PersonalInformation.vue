@@ -1,29 +1,28 @@
 <template>
-  <form v-if="customer" class="bg-white rounded-lg shadow" @submit.prevent="saveChanges">
-    <div class="grid gap-6 p-8 md:grid-cols-2">
-      <h3 class="text-xl font-semibold col-span-full">{{ $t('messages.account.personalInfo') }}</h3>
+  <form v-if="customer" class="mt-12" @submit.prevent="saveChanges">
+    <div class="grid gap-5 p-2 md:p-1.5 md:grid-cols-2 personal-form">
+      <p class="text-xl md:text-2xl tracking-s col-span-full">{{ $t('messages.account.personalInfo') }}</p>
 
       <div class="w-full">
         <label for="first-name">{{ $t('messages.billing.firstName') }}</label>
-        <input v-model="customer.firstName" placeholder="John" type="text" />
+        <input v-model="customer.firstName" placeholder="Nome" type="text" />
       </div>
 
       <div class="w-full">
         <label for="last-name">{{ $t('messages.billing.lastName') }}</label>
-        <input v-model="customer.lastName" placeholder="Doe" type="text" />
+        <input v-model="customer.lastName" placeholder="Cognome" type="text" />
       </div>
       <div class="w-full col-span-full">
         <label for="email">{{ $t('messages.billing.email') }}</label>
-        <input v-model="customer.email" placeholder="johndoe@email.com" type="email" />
+        <input v-model="customer.email" placeholder="Email" type="email" />
       </div>
     </div>
-    <div class="bg-white backdrop-blur-sm bg-opacity-75 border-t col-span-full p-4 sticky bottom-0 rounded-b-lg">
+    <div class="bg-white bg-opacity-75 col-span-full p-2 md:p-1.5 mt-6 sticky bottom-0">
       <button
-        class="rounded-md flex font-semibold ml-auto text-white py-2 px-4 gap-4 items-center disabled:bg-gray-400 disabled:cursor-not-allowed"
-        :class="button.color"
+        class="flex bg-black hover:bg-white hover:text-black w-full border border-black ml-auto text-white p-2 md:p-1.5 h-9 gap-4 items-center text-center disabled:bg-gray-400 disabled:cursor-not-allowed"
         :disabled="loading">
         <LoadingIcon v-if="loading" color="#fff" size="20" />
-        <span>{{ button.text }}</span>
+        <span class="w-full uppercase">{{ button.text }}</span>
       </button>
     </div>
   </form>
@@ -55,3 +54,14 @@ async function saveChanges() {
   }, 2000);
 }
 </script>
+
+<style lang="postcss" scoped>
+.personal-form input[type='text'],
+.personal-form input[type='email'] {
+  @apply bg-white border-b h-9 rounded-none outline-none border-gray-300 w-full p-2;
+}
+
+.tracking-s {
+  letter-spacing: -0.015em;
+}
+</style>

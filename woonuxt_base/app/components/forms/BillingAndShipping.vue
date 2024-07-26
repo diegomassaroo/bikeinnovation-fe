@@ -1,16 +1,16 @@
 <template>
-  <form class="bg-white rounded-lg shadow" @submit.prevent="saveChanges">
-    <div class="grid p-8 gap-6 md:grid-cols-2">
-      <h3 class="font-semibold text-xl col-span-full">{{ $t('messages.billing.billing') }}</h3>
+  <form class="bg-white" @submit.prevent="saveChanges">
+    <div class="grid p-2 md:p-1.5 gap-5 md:grid-cols-2 personal-form">
+      <h3 class="text-xl md:text-2xl tracking-s col-span-full">{{ $t('messages.billing.billing') }}</h3>
 
       <div class="w-full">
         <label for="first-name">{{ $t('messages.billing.firstName') }}</label>
-        <input v-model="customer.billing.firstName" placeholder="John" type="text" required />
+        <input v-model="customer.billing.firstName" placeholder="Nome" type="text" required />
       </div>
 
       <div class="w-full">
         <label for="last-name">{{ $t('messages.billing.lastName') }}</label>
-        <input v-model="customer.billing.lastName" placeholder="Doe" type="text" required />
+        <input v-model="customer.billing.lastName" placeholder="Cognome" type="text" required />
       </div>
 
       <div class="w-full">
@@ -19,23 +19,23 @@
       </div>
 
       <div class="w-full">
-        <label for="billing-company">Company</label>
+        <label for="billing-company">{{ $t('messages.billing.company') }}</label>
         <input v-model="customer.billing.company" type="text" />
       </div>
 
       <div class="w-full">
         <label for="billing-address">{{ $t('messages.billing.address1') }}</label>
-        <input v-model="customer.billing.address1" placeholder="123 Main St" type="text" />
+        <input v-model="customer.billing.address1" placeholder="Indirizzo" type="text" />
       </div>
 
       <div class="w-full">
         <label for="billing-address-2">{{ $t('messages.billing.address2') }}</label>
-        <input v-model="customer.billing.address2" placeholder="Apartment, studio, or floor" type="text" />
+        <input v-model="customer.billing.address2" placeholder="Appartamento, studio, piano" type="text" />
       </div>
 
       <div class="w-full">
         <label for="billing-city">{{ $t('messages.billing.city') }}</label>
-        <input v-model="customer.billing.city" placeholder="New York" type="text" />
+        <input v-model="customer.billing.city" placeholder="Città" type="text" />
       </div>
 
       <div class="w-full">
@@ -50,26 +50,26 @@
 
       <div class="w-full">
         <label for="billing-zip">{{ $t('messages.billing.zip') }}</label>
-        <input v-model="customer.billing.postcode" placeholder="10001" type="text" />
+        <input v-model="customer.billing.postcode" placeholder="CAP" type="text" />
       </div>
 
       <div class="w-full col-span-full">
         <label for="email">{{ $t('messages.billing.email') }}</label>
-        <input v-model="customer.billing.email" placeholder="johndoe@email.com" type="email" required />
+        <input v-model="customer.billing.email" placeholder="Email" type="email" required />
       </div>
     </div>
 
-    <div class="grid p-8 gap-6 md:grid-cols-2">
-      <h3 class="font-semibold text-xl col-span-full">{{ $t('messages.general.shipping') }}</h3>
+    <div class="grid p-2 md:p-1.5 gap-5 mt-12 md:grid-cols-2 personal-form">
+      <h3 class="font-semibold text-xl md:text-2xl tracking-s col-span-full">{{ $t('messages.general.shipping') }}</h3>
 
       <div class="w-full">
         <label for="first-name">{{ $t('messages.billing.firstName') }}</label>
-        <input v-model="customer.shipping.firstName" placeholder="John" type="text" required />
+        <input v-model="customer.shipping.firstName" placeholder="Nome" type="text" required />
       </div>
 
       <div class="w-full">
         <label for="last-name">{{ $t('messages.billing.lastName') }}</label>
-        <input v-model="customer.shipping.lastName" placeholder="Doe" type="text" required />
+        <input v-model="customer.shipping.lastName" placeholder="Cognome" type="text" required />
       </div>
 
       <div class="w-full">
@@ -78,23 +78,23 @@
       </div>
 
       <div class="w-full">
-        <label for="billing-company">Company</label>
+        <label for="billing-company">{{ $t('messages.billing.company') }}</label>
         <input v-model="customer.shipping.company" type="text" />
       </div>
 
       <div class="w-full">
         <label for="billing-address">{{ $t('messages.billing.address1') }}</label>
-        <input v-model="customer.shipping.address1" placeholder="123 Main St" type="text" />
+        <input v-model="customer.shipping.address1" placeholder="Indirizzo" type="text" />
       </div>
 
       <div class="w-full">
         <label for="billing-address-2">{{ $t('messages.billing.address2') }}</label>
-        <input v-model="customer.shipping.address2" placeholder="Apartment, studio, or floor" type="text" />
+        <input v-model="customer.shipping.address2" placeholder="Appartamento, studio, piano" type="text" />
       </div>
 
       <div class="w-full">
         <label for="billing-city">{{ $t('messages.billing.city') }}</label>
-        <input v-model="customer.shipping.city" placeholder="New York" type="text" />
+        <input v-model="customer.shipping.city" placeholder="Città" type="text" />
       </div>
 
       <div class="w-full">
@@ -109,17 +109,16 @@
 
       <div class="w-full">
         <label for="billing-zip">{{ $t('messages.billing.zip') }}</label>
-        <input v-model="customer.shipping.postcode" placeholder="10001" type="text" />
+        <input v-model="customer.shipping.postcode" placeholder="CAP" type="text" />
       </div>
     </div>
 
-    <div class="bg-white backdrop-blur-sm bg-opacity-75 border-t col-span-full p-4 sticky bottom-0 rounded-b-lg">
+    <div class="bg-white col-span-full p-2 md:p-1.5 mt-6 sticky bottom-0 ">
       <button
-        class="rounded-md flex font-semibold ml-auto text-white py-2 px-4 gap-4 items-center disabled:bg-gray-400 disabled:cursor-not-allowed"
-        :class="button.color"
+        class="flex bg-black ml-auto hover:bg-white hover:text-black w-full border border-black text-white p-2 md:p-1.5 items-center disabled:bg-gray-400 disabled:cursor-not-allowed"
         :disabled="loading">
         <LoadingIcon v-if="loading" color="#fff" size="20" />
-        <span>{{ button.text }}</span>
+        <span class="w-full uppercase">{{ button.text }}</span>
       </button>
     </div>
   </form>
@@ -152,3 +151,15 @@ async function saveChanges(): Promise<void> {
   }, 2000);
 }
 </script>
+
+<style lang="postcss" scoped>
+.personal-form input[type='text'],
+.personal-form input[type='tel'],
+.personal-form input[type='email'] {
+  @apply bg-white border-b h-9 rounded-none outline-none border-gray-300 w-full p-2;
+}
+
+.tracking-s {
+  letter-spacing: -0.015em;
+}
+</style>

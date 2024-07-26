@@ -8,37 +8,29 @@ const showLoader = computed(() => !viewer && !customer);
 </script>
 
 <template>
-  <div class="container min-h-[600px]">
+  <div class="min-h-[680px]">
     <div v-if="showLoader || !cart" class="flex flex-col min-h-[500px]">
       <LoadingIcon class="m-auto" />
     </div>
     <template v-else>
       <LazyLoginAndRegister v-if="!viewer" />
-      <div v-else class="flex flex-col items-start w-full lg:gap-8 mb-24 lg:flex-row">
-        <nav class="flex lg:grid flex-wrap w-full gap-1 my-8 text-gray-600 min-w-[240px] top-24 lg:w-auto lg:sticky">
+      <div v-else class="flex flex-col items-start w-full lg:gap-8 mb-24">
+        <nav class="border-b border-gray-300 p-2 md:p-1.5 h-9 flex gap-3.5 lg:gap-5 w-full text-black min-w-[240px] top-32">
           <NuxtLink
             to="/my-account?tab=my-details"
-            class="flex items-center gap-4 p-3 px-4 hover:bg-white hover:text-primary"
+            class="uppercase flex items-center gap-4 hover:underline"
             :class="{ active: activeTab == 'my-details' }">
             {{ $t('messages.general.myDetails') }}
           </NuxtLink>
-          <NuxtLink to="/my-account?tab=orders" class="flex items-center gap-4 p-3 px-4 rounded-lg hover:bg-white hover:text-primary" :class="{ active: activeTab == 'orders' }">
+          <NuxtLink to="/my-account?tab=orders" class="uppercase flex items-center gap-4 hover:underline" :class="{ active: activeTab == 'orders' }">
             {{ $t('messages.shop.order', 2) }}
           </NuxtLink>
-          <!-- <NuxtLink
-            to="/my-account?tab=downloads"
-            class="flex items-center gap-4 p-3 px-4 rounded-lg hover:bg-white hover:text-primary"
-            :class="{ active: activeTab == 'downloads' }">
-            <Icon name="ion:cloud-download-outline" size="22" />
-            {{ $t('messages.general.downloads') }}
-          </NuxtLink> -->
-          <button class="flex items-center gap-4 p-3 px-4 rounded-lg hover:bg-white hover:text-primary" @click="logoutUser">
-            <LoadingIcon v-if="isPending" size="22" />
+          <button class="uppercase flex items-center gap-4 hover:underline" @click="logoutUser">
             {{ $t('messages.account.logout') }}
           </button>
         </nav>
 
-        <main class="flex-1 w-full lg:my-8 rounded-lg">
+        <main class="flex-1 w-full lg:my-8">
           <AccountMyDetails v-if="activeTab === 'my-details'" :user="viewer" />
           <OrderList v-else-if="activeTab === 'orders'" />
         </main>
@@ -49,6 +41,6 @@ const showLoader = computed(() => !viewer && !customer);
 
 <style lang="postcss" scoped>
 a.active {
-  @apply text-primary;
+  @apply underline;
 }
 </style>

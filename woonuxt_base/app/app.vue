@@ -228,9 +228,7 @@ a {
   line-height: 1rem;
 }
 
-h3 {
-  letter-spacing: .2px;
-  font-size: 24px;
-  line-height: 30px;
+.tracking-s {
+  letter-spacing: -0.015em;
 }
 </style>

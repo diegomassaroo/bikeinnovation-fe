@@ -1,7 +1,7 @@
 <template>
-  <form class="bg-white rounded-lg shadow mt-4" @submit.prevent="updatePassword">
-    <div class="grid p-8 gap-6 md:grid-cols-2">
-      <h3 class="font-semibold text-xl col-span-full">{{ $t('messages.account.changePassword') }}</h3>
+  <form class="bg-white" @submit.prevent="updatePassword">
+    <div class="grid p-2 md:p-1.5 gap-5 md:grid-cols-2 personal-form">
+      <h3 class="text-xl md:text-2xl tracking-s col-span-full">{{ $t('messages.account.changePassword') }}</h3>
 
       <input v-model="viewer.username" type="hidden" />
 
@@ -20,13 +20,12 @@
       </Transition>
     </div>
 
-    <div class="bg-white backdrop-blur-sm bg-opacity-75 border-t col-span-full p-4 sticky bottom-0 rounded-b-lg">
+    <div class="bg-white col-span-full p-2 md:p-1.5 mt-6 sticky bottom-0">
       <button
-        class="rounded-md flex font-semibold ml-auto text-white py-2 px-4 gap-4 items-center disabled:bg-gray-400 disabled:cursor-not-allowed"
-        :class="button.color"
+        class="flex bg-black ml-auto text-white hover:bg-white hover:text-black w-full border border-black p-2 md:p-1.5 items-center disabled:bg-gray-400 disabled:cursor-not-allowed"
         :disabled="loading">
         <LoadingIcon v-if="loading" color="#fff" size="20" />
-        <span>{{ button.text }}</span>
+        <span class="w-full uppercase">{{ button.text }}</span>
       </button>
     </div>
   </form>
@@ -76,3 +75,15 @@ const updatePassword = async () => {
   }, 2000);
 };
 </script>
+
+<style lang="postcss" scoped>
+.personal-form input[type='text'],
+.personal-form input[type='tel'],
+.personal-form input[type='email'] {
+  @apply bg-white border-b h-9 rounded-none outline-none border-gray-300 w-full p-2;
+}
+
+.tracking-s {
+  letter-spacing: -0.015em;
+}
+</style>

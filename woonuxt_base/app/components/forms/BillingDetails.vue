@@ -10,30 +10,30 @@ const billing = toRef(props, 'modelValue');
 </script>
 
 <template>
-  <div class="grid w-full gap-4 lg:grid-cols-2">
+  <div class="grid w-full gap-5 lg:grid-cols-2 personal-form">
     <div class="w-full">
       <label for="first-name">{{ $t('messages.billing.firstName') }}</label>
-      <input v-model="billing.firstName" placeholder="John" type="text" required />
+      <input v-model="billing.firstName" placeholder="Nome" type="text" required />
     </div>
 
     <div class="w-full">
       <label for="last-name">{{ $t('messages.billing.lastName') }}</label>
-      <input v-model="billing.lastName" placeholder="Doe" type="text" required />
+      <input v-model="billing.lastName" placeholder="Cognome" type="text" required />
     </div>
 
     <div class="w-full col-span-full">
       <label for="address1">{{ $t('messages.billing.address1') }}</label>
-      <input v-model="billing.address1" placeholder="O'Connell Street" type="text" required />
+      <input v-model="billing.address1" placeholder="Indirizzo" type="text" required />
     </div>
 
     <div class="w-full col-span-full">
       <label for="address2">{{ $t('messages.billing.address2') }}</label>
-      <input v-model="billing.address2" placeholder="Dublin 1" type="text" />
+      <input v-model="billing.address2" placeholder="Appartamento, studio, piano" type="text" />
     </div>
 
     <div class="w-full">
       <label for="city">{{ $t('messages.billing.city') }}</label>
-      <input v-model="billing.city" placeholder="Dublin" type="text" required />
+      <input v-model="billing.city" placeholder="Città" type="text" required />
     </div>
 
     <div class="w-full">
@@ -47,13 +47,13 @@ const billing = toRef(props, 'modelValue');
     </div>
 
     <div class="w-full">
-      <label for="zip">ZIP</label>
-      <input v-model="billing.postcode" placeholder="D01 1234" type="text" />
+      <label for="zip">{{ $t('messages.billing.zip') }}</label>
+      <input v-model="billing.postcode" placeholder="CAP" type="text" />
     </div>
 
     <div class="w-full col-span-full">
       <label for="phone">{{ $t('messages.billing.phone') }} ({{ $t('messages.general.optional') }})</label>
-      <input v-model="billing.phone" placeholder="+353871234567" type="tel" />
+      <input v-model="billing.phone" placeholder="Telefono" type="tel" />
     </div>
   </div>
 </template>

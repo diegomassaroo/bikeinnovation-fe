@@ -65,8 +65,8 @@ async function addComment() {
 
 <template>
   <div>
-    <h4 v-if="reviews.edges.length" class="font-semibold text-xl md:text-2xl text-gray-900">{{ $t('messages.shop.customerReviews') }}</h4>
-    <h4 v-else class="font-semibold text-xl md:text-2xl text-gray-900">{{ $t('messages.shop.noReviews') }}</h4>
+    <h4 v-if="reviews.edges.length" class="font-semibold text-xl tracking-s md:text-2xl text-gray-900">{{ $t('messages.shop.customerReviews') }}</h4>
+    <h4 v-else class="font-semibold text-xl tracking-s md:text-2xl text-gray-900">{{ $t('messages.shop.noReviews') }}</h4>
     <div v-if="reviews.edges.length" class="my-2">
       <StarRating :rating="reviews.averageRating" :hide-count="true" class="mr-2" />
       <span> {{ $t('messages.general.basedOn') }} {{ reviews.edges.length }} {{ $t('messages.shop.reviews') }}</span>
@@ -83,7 +83,7 @@ async function addComment() {
         </div>
       </div>
     </div>
-    <div class="mt-10 text-xl mb-2 text-gray-900">Share your thoughts</div>
+    <div class="mt-10 text-xl md:text-2xl tracking-s mb-2 text-gray-900">Share your thoughts</div>
     <div class="mb-4">If you have used this product, we would love to hear about your experience.</div>
     <button @click="show = !show" class="border rounded-lg text-center w-full p-2">{{ show ? $t('messages.shop.close') : $t('messages.shop.writeReview') }}</button>
     <transition class="ease-in-out transform transition-all" name="scale-y">
@@ -145,5 +145,9 @@ async function addComment() {
 .writeReview input,
 .writeReview textarea {
   @apply bg-white border rounded-md outline-none border-gray-300 shadow-sm w-full py-2 px-4;
+}
+
+.tracking-s {
+  letter-spacing: -0.015em;
 }
 </style>

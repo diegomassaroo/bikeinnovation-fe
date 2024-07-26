@@ -19,7 +19,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="flex gap-4 leading-tight flex-wrap">
+  <div class="flex gap-4 flex-wrap">
     <div
       v-for="gateway in paymentGateways?.nodes"
       :key="gateway.id"
@@ -33,18 +33,18 @@ onMounted(() => {
       <span class="whitespace-nowrap" v-html="gateway.title" />
       <icon name="ion:checkmark-circle" size="20" class="ml-auto text-primary checkmark opacity-0" />
     </div>
-    <div v-if="activePaymentMethod.description" class="prose">
+    <!-- <div v-if="activePaymentMethod.description" class="prose">
       <p class="text-gray-500" v-html="activePaymentMethod.description" />
-    </div>
+    </div> -->
   </div>
 </template>
 
 <style lang="postcss" scoped>
 .option {
-  @apply bg-white border rounded-lg text-gray-600 cursor-pointer flex flex-1 py-3 px-4 gap-2 items-center hover:border-purple-300;
+  @apply bg-white border text-black cursor-pointer flex flex-1 p-2 md:p-1.5 gap-2 items-center hover:border-black;
 
   &.active-option {
-    @apply border-primary cursor-default border-opacity-50 shadow-sm pointer-events-none;
+    @apply border-black cursor-default pointer-events-none;
 
     & .checkmark {
       @apply opacity-100;

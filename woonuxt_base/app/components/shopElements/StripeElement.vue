@@ -2,7 +2,10 @@
 const { cart } = useCart();
 const { stripe } = defineProps(['stripe']);
 
-const rawCartTotal = computed(() => cart.value && parseFloat(cart.value.rawTotal as string) * 100);
+const rawCartTotal = computed(() => {
+  const total = cart.value && parseFloat(cart.value.rawTotal as string) * 100;
+  return total ? Math.round(total) : 0;
+});
 const emit = defineEmits(['updateElement']);
 let elements = null as any;
 

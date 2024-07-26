@@ -18,9 +18,9 @@ const setActiveOption = async (id) => {
       class="flex items-center justify-between option"
       :class="{ 'active-option': option.id === activeOption }"
       @click="setActiveOption(option.id)">
-      <div>
-        <div class="leading-tight text-gray-500" v-html="option.label"></div>
-        <div class="font-semibold text-gray-600">€{{ option.cost }}</div>
+      <div class="flex gap-2">
+        <div class="text-gray-500" v-html="option.label"></div>
+        <div class="text-gray-500">€{{ option.cost }}</div>
       </div>
 
       <icon name="ion:checkmark-circle" size="20" class="ml-auto text-primary checkmark opacity-0" />
@@ -33,10 +33,10 @@ const setActiveOption = async (id) => {
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 
   .option {
-    @apply bg-white border rounded-lg text-gray-600 cursor-pointer flex flex-1 py-3 px-4 gap-2 items-center hover:border-purple-300;
+    @apply bg-white border text-black cursor-pointer flex flex-1 p-2 md:p-1.5 gap-2 items-center hover:border-black;
 
     &.active-option {
-      @apply border-primary cursor-default border-opacity-50 shadow-sm pointer-events-none;
+      @apply border-black cursor-default pointer-events-none;
 
       & .checkmark {
         @apply opacity-100;
