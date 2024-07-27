@@ -80,7 +80,7 @@ useSeoMeta({
           <div v-if="!viewer" class="gap-3.5 lg:gap-5 grid">
             <div class="gap-1 grid">
               <h2 class="w-full text-xl md:text-2xl tracking-s md:text-2xl leading-none">{{ $t('messages.billing.contactInformation') }}</h2>
-              <p class="text-gray-500">
+              <p class="text-gray-500 uppercase">
                 {{ $t('messages.account.hasAccount') }}
                 <NuxtLink href="/my-account" class="text-black underline hover:no-underline">{{ $t('messages.account.accountLogin') }}</NuxtLink>
               </p>
@@ -96,7 +96,7 @@ useSeoMeta({
                 @input="checkEmailOnInput(customer.billing.email)"
                 required />
               <Transition name="scale-y" mode="out-in">
-                <div v-if="isInvalidEmail" class="mt-1 text-red-500">Invalid email address</div>
+                <div v-if="isInvalidEmail" class="mt-1 text-red-500">{{ $t('messages.account.invalidEmail') }}</div>
               </Transition>
             </div>
             <template v-if="orderInput.createAccount">
@@ -109,8 +109,8 @@ useSeoMeta({
                 <PasswordInput id="password" class="my-2" v-model="orderInput.password" placeholder="Password" :required="true" />
               </div>
             </template>
-            <div v-if="!viewer" class="flex items-center gap-2 my-2">
-              <label for="creat-account">Create an account?</label>
+            <div v-if="!viewer" class="uppercase flex items-center gap-2 my-2">
+              <span for="creat-account">{{ $t('messages.account.noAccount') }}</span>
               <input id="creat-account" v-model="orderInput.createAccount" type="checkbox" name="creat-account" />
             </div>
           </div>
@@ -223,7 +223,7 @@ input[type='radio']:after {
 }
 
 input[type='checkbox']:checked:after {
-  @apply cursor-pointer text-gray-600 hover:text-primary;
+  @apply cursor-pointer text-gray-500 hover:text-primary;
 }
 
 input[type='checkbox']:checked {
@@ -241,7 +241,7 @@ input[type='checkbox']:checked:after {
 }
 
 .checkout-form label {
-  @apply mb-1 text-gray-500 uppercase inline-flex;
+  @apply mb-1 text-black uppercase inline-flex;
 }
 
 .checkout-form .StripeElement {

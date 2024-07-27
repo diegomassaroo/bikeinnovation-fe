@@ -60,7 +60,7 @@
       "register": "Registrati",
       "accountRegister": "Iscriviti",
       "accountLogin": "Accedi",
-      "noAccount": "Non hai un account?",
+      "noAccount": "Vuoi creare un account?",
       "hasAccount": "Hai già un account?",
       "accountCreated": "Il tuo account è stato creato.",
       "myAccount": "Il mio account",
@@ -71,7 +71,11 @@
       "updateDetails": "Aggiorna dettagli",
       "updateSuccess": "Aggiornato con successo",
       "failed": "Aggiornamento fallito",
-      "personalAccount": "Account"
+      "personalAccount": "Account",
+      "invalidEmail": "Indirizzo email invalido",
+      "forgetPassword": "Hai dimenticato la password?",
+      "backLogin": "Torna al login",
+      "resetPassword": "Per favore inserisci il tuo indirizzo email e ti manderemo un link per reimpostare la password."
     },
     "shop": {
       "shopByCategory": "Acquista per categoria",
