@@ -2,19 +2,17 @@
 const { cart } = useCart();
 const { stripe } = defineProps(['stripe']);
 
-const rawCartTotal = computed(() => {
-  const total = cart.value && parseFloat(cart.value.rawTotal as string) * 100;
-  return total ? Math.round(total) : 0;
-});
+const rawCartTotal = computed(() => cart.value && parseFloat(cart.value.rawTotal as string) * 100);
+
 const emit = defineEmits(['updateElement']);
 let elements = null as any;
 
-const options = {
+const options = computed(() => ({
   mode: 'payment',
   currency: 'eur',
   amount: rawCartTotal.value,
   // paymentMethodCreation: 'manual',
-};
+}));
 
 const createStripeElements = async () => {
   elements = stripe.elements(options);

@@ -17,10 +17,10 @@ const handleInputChanged = (e: Event) => {
 </script>
 
 <template>
-  <div class="relative flex items-center w-full">
+  <div class="relative outline-none flex items-center w-full">
     <input
       :type="showPassword ? 'text' : 'password'"
-      class="flex items-center flex-1"
+      class="flex items-center flex-1 outline-none"
       :value="modelValue"
       @input="handleInputChanged"
       :class="className"

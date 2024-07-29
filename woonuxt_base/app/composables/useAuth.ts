@@ -22,7 +22,7 @@ export const useAuth = () => {
           return {
             success: false,
             error:
-              'Your credentials are correct, but there was an error logging in. This is most likely due to an SSL error. Please try again later. If the problem persists, please contact support.',
+              'Le tue credenziali sono corrette, ma si è verificato un errore durante l’accesso. Ciò è probabilmente dovuto a un errore SSL. Riprova più tardi. Se il problema persiste, contatta l’assistenza.',
           };
         }
       }
@@ -98,7 +98,7 @@ export const useAuth = () => {
       if (sendPasswordResetEmail?.success) {
         return { success: true, error: null };
       }
-      return { success: false, error: 'There was an error sending the reset password email. Please try again later.' };
+      return { success: false, error: 'Si è verificato un errore durante l’invio dell’email di reimpostazione della password. Riprova più tardi.' };
     } catch (error: any) {
       const gqlError = error?.gqlErrors?.[0];
       return { success: false, error: gqlError?.message };
@@ -112,7 +112,7 @@ export const useAuth = () => {
         orders.value = customer.orders?.nodes ?? [];
         return { success: true, error: null };
       }
-      return { success: false, error: 'There was an error getting your orders. Please try again later.' };
+      return { success: false, error: 'Si è verificato un errore durante il recupero degli ordini. Riprova più tardi.' };
     } catch (error: any) {
       const gqlError = error?.gqlErrors?.[0];
       return { success: false, error: gqlError?.message };

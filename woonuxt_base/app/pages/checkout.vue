@@ -160,7 +160,7 @@ useSeoMeta({
 
         <OrderSummary>
           <button
-            class="flex bg-black hover:bg-white hover:text-black w-full border border-black items-center justify-center p-2 md:p-1.5 gap-3 text-center text-white disabled:cursor-not-allowed disabled:bg-gray-400"
+            class="uppercase flex bg-black hover:bg-white hover:text-black w-full border border-black items-center justify-center p-2 md:p-1.5 h-9 gap-3 text-center text-white disabled:cursor-not-allowed disabled:bg-gray-400"
             :disabled="isCheckoutDisabled">
             {{ buttonText }}<LoadingIcon v-if="isProcessingOrder" color="#fff" size="18" />
           </button>
