@@ -89,7 +89,7 @@ const props = defineProps({
 
 <template>
   <section>
-    <div class="w-full flex" :class="{ 'mb-24 md:mb-40': spacer.includes('Large') }">
+    <div class="w-full block md:flex" :class="{ 'mb-24 md:mb-40': spacer.includes('Large') }">
       <div class="w-full relative" v-if="firstThumb">
         <NuxtImg
           class="aspect-vertical w-full"
