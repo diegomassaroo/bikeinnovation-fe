@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-lg mx-auto my-16 lg:my-24">
+  <div class="p-2 md:p-1.5 max-w-lg mx-auto my-16 lg:my-24">
     <div class="flex flex-col items-center gap-1 mb-8">
       <h1 class="text-xl tracking-s md:text-2xl">{{ $t('messages.account.loginToAccount') }}</h1>
       <div v-if="formView == 'login'" class="uppercase text-center">

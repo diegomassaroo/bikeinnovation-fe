@@ -47,7 +47,7 @@ const props = defineProps({
   <section>
     <div class="relative" :class="{'mb-24 md:mb-40': spacer.includes('Large')}">
       <div v-if="video">
-        <video class="w-full aspect-video" autoplay muted loop :poster="poster.node.sourceUrl">
+        <video class="w-full aspect-video" autoplay muted loop autobuffer playsinline :poster="poster.node.sourceUrl">
           <source :src="video" type="video/mp4" />
         </video>
       </div>
