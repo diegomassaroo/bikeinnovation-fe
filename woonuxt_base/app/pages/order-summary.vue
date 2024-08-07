@@ -98,7 +98,7 @@ const refreshOrder = async () => {
           </div>
           <div>
             <div class="text-black uppercase mb-2">{{ $t('messages.general.status') }}</div>
-            <OrderStatusLabel :status="order.status" />
+            <OrderStatusLabel v-if="order.status" :order="order" />
           </div>
           <div>
             <div class="text-black uppercase mb-2">{{ $t('messages.general.paymentMethod') }}</div>
