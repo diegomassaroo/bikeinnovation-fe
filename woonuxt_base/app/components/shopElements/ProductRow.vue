@@ -13,7 +13,7 @@ const props = defineProps({
       :node="node"
       :index="i"
       :class="{
-        hidden: i >= products.length - 2,
+        hidden: i >= products.length - 3,
         'md:block': i === products.length - 2,
         'md:hidden': i === products.length - 1,
         '2xl:block': i === products.length - 1,
