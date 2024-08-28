@@ -2,6 +2,7 @@ import { createResolver } from '@nuxt/kit';
 const { resolve } = createResolver(import.meta.url);
 
 export default defineNuxtConfig({
+  compatibilityDate: '2024-07-09',
   future: {
     compatibilityVersion: 4,
   },
@@ -11,7 +12,7 @@ export default defineNuxtConfig({
       htmlAttrs: { lang: 'it' },
       link: [{ rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml' }],
     },
-    pageTransition: { name: 'page', mode: 'out-in' },
+    pageTransition: { name: 'page', mode: 'default' },
   },
 
   experimental: {

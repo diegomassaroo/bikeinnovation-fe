@@ -4,7 +4,6 @@ import { useCssVar } from '@vueuse/core';
 import { StockStatusEnum, ProductTypesEnum, type AddToCartInput } from '#woo';
 
 const route = useRoute();
-const { storeSettings } = useAppConfig();
 const { arraysEqual, formatArray, checkForVariationTypeOfAny } = useHelpers();
 const { addToCart, isUpdatingCart } = useCart();
 const slug = route.params.slug as string;

@@ -4,6 +4,7 @@ const { siteName, description, shortDescription, siteImage } = useAppConfig();
 const { data: pageData } = await useAsyncGql('getPage', { uri: '/' });
 
 useSeoMeta({
+  title: `Home`,
   ogTitle: siteName,
   description: description,
   ogDescription: shortDescription,

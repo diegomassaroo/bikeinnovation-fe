@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { useElementBounding } from '@vueuse/core';
 import { useCssVar } from '@vueuse/core';
 import { Swiper, SwiperSlide } from 'swiper/vue';
@@ -6,13 +6,12 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import { Navigation } from 'swiper/modules';
 const modules = [Navigation];
-
 const { fallbackImage } = useHelpers();
 
 const props = defineProps({
   mainImage: { type: Object, required: true },
   gallery: { type: Object, required: true },
-  node: { type: Object, required: true },
+  node: { type: Object as PropType<Product>, required: true },
   activeVariation: { type: Object, required: false },
 });
 
@@ -26,18 +25,9 @@ const primaryImage = computed(() => ({
 const imageToShow = ref(primaryImage.value);
 
 const galleryImages = computed(() => {
-  return [primaryImage.value, ...props.gallery.nodes].filter((img, index, self) => index === self.findIndex((t) => t?.databaseId === img?.databaseId));
+  // Add the primary image to the start of the gallery and remove duplicates
+  return [primaryImage.value, ...props.gallery.nodes];
 });
-
-watch(
-  () => props.activeVariation,
-  (newVal) => {
-    if (newVal?.image) {
-      const foundImage = galleryImages.value.find((img) => img.databaseId === newVal.image?.databaseId);
-      if (foundImage) imageToShow.value = foundImage;
-    }
-  },
-);
 
 const currentSlide = ref(1);
 const totalSlides = ref(galleryImages.value.length);
@@ -79,9 +69,10 @@ watch(pagHeight, (v) => {
       :draggable="true">
       <swiper-slide v-for="image in galleryImages" :key="image.databaseId"
         ><NuxtImg
+          :key="image.databaseId"
+          :src="image.sourceUrl"
           :alt="image.altText || node.name"
           :title="image.title || node.name"
-          :src="image.sourceUrl || fallbackImage"
           fetchpriority="high"
           placeholder
           placeholder-class="blur-xl"
