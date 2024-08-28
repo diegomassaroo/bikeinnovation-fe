@@ -65,7 +65,7 @@ watch(pagHeight, (v) => {
 
 <template>
   <div>
-    <SaleBadge :node="node" class="absolute text-base top-4 right-4" />
+    <!-- <SaleBadge :node="node" class="absolute text-base top-4 right-4" /> -->
     <swiper
       class="swiperContainer"
       :loop="true"
@@ -85,7 +85,7 @@ watch(pagHeight, (v) => {
           fetchpriority="high"
           placeholder
           placeholder-class="blur-xl"
-          class="w-full h-full object-center object-cover overflow-hidden"
+          class="w-full h-full object-center object-contain overflow-hidden"
       /></swiper-slide>
     </swiper>
     <div class="sticky-container paginationFraction w-fit bottom-0 z-10 absolute left-1/2 md:m-1.5">

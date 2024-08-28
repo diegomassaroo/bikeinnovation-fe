@@ -38,7 +38,7 @@ const imagetoDisplay = computed<string>(() => {
 <template>
   <NuxtLink :to="`/product/${decodeURIComponent(node.slug)}`" :title="node.name">
     <div class="flex flex-col contents-between gap-2 lg:gap-1.5 product-card p-2 lg:p-1.5">
-      <SaleBadge :node="node" class="absolute top-2 right-2" />
+      <!-- <SaleBadge :node="node" class="absolute top-2 right-2" /> -->
       <NuxtImg
         class="flex-1"
         v-if="imagetoDisplay"
