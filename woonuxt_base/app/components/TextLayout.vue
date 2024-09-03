@@ -22,14 +22,18 @@ const props = defineProps({
         <p class="text-xl md:text-2xl tracking-s">{{ title }}</p>
       </div>
       <div v-if="text" class="grid col-start-1 col-span-4 lg:col-start-2 lg:col-span-2 md:col-span-3">
-        <p>{{ text }}</p>
+        <div v-html="text"></div>
       </div>
     </div>
   </section>
 </template>
 
-<style scoped>
+<style lang="postcss">
 .tracking-s {
   letter-spacing: -0.015em;
+}
+
+p > a {
+  @apply text-center uppercase underline hover:no-underline;
 }
 </style>

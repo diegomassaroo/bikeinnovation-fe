@@ -77,7 +77,7 @@ useSeoMeta({
       <form v-else class="flex flex-wrap items-start gap-12 mt-12 my-24 lg:mt-24 lg:mb-40 justify-between p-2 md:p-3" @submit.prevent="payNow">
         <div class="grid w-full gap-12 lg:gap-24 checkout-form lg:flex-1">
           <!-- Customer details -->
-          <div v-if="!viewer" class="gap-3.5 lg:gap-5 grid">
+          <div v-if="!viewer && customer.billing" class="gap-3.5 lg:gap-5 grid">
             <div class="gap-1 grid">
               <h2 class="w-full text-xl md:text-2xl tracking-s md:text-2xl leading-none">{{ $t('messages.billing.contactInformation') }}</h2>
               <p class="text-gray-500 uppercase">
