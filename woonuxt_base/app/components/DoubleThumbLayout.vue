@@ -85,6 +85,9 @@ const props = defineProps({
     required: true,
   },
 });
+
+console.log(props.firstThumb);
+
 </script>
 
 <template>
