@@ -1,7 +1,6 @@
 <script setup>
-const { siteName, description, shortDescription, siteImage } = useAppConfig();
-
 const { data: pageData } = await useAsyncGql('getPage', { uri: '/' });
+const { siteName, description, shortDescription, siteImage } = useAppConfig();
 
 useSeoMeta({
   title: `Home`,
