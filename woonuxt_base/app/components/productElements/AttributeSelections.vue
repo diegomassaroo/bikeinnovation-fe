@@ -37,8 +37,6 @@ onMounted(() => {
   setDefaultAttributes();
   updateAttrs();
 });
-
-console.log(attributes)
 </script>
 
 <template>
@@ -86,19 +84,19 @@ console.log(attributes)
           {{ attr.label }}
         </div>
         <div class="flex gap-2 justify-between">
-          <span v-for="(option, index) in attr.terms.nodes" :key="index" class="w-full">
-            <label :for="`${option.slug}_${index}`">
+          <span v-for="(term, index) in attr.terms.nodes" :key="index" class="w-full">
+            <label :for="`${term.slug}_${index}`">
               <input
-                :id="`${option.slug}_${index}`"
+                :id="`${term.slug}_${index}`"
                 :ref="attr.name"
                 class="hidden"
                 :checked="index == 0"
                 type="radio"
                 :class="`name-${attr.name}`"
                 :name="attr.name"
-                :value="option.slug"
+                :value="term.slug"
                 @change="updateAttrs" />
-              <span class="radio-button" :class="`picker-${option.slug}`" :title="`${attr.name}: ${option.slug}`">{{ decodeURIComponent(option.name) }}</span>
+              <span class="radio-button" :class="`picker-${term.slug}`" :title="`${attr.name}: ${term.slug}`">{{ term.name }}</span>
             </label>
           </span>
         </div>

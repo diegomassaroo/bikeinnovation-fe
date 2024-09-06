@@ -103,6 +103,20 @@ query getPage($uri: ID!) {
                   sourceUrl
                 }
                 price
+                salePrice
+                regularPrice
+              }
+              ... on VariableProduct {
+                id
+                name
+                image {
+                  title
+                  altText
+                  sourceUrl
+                }
+                price
+                salePrice
+                regularPrice
               }
               databaseId
               id
@@ -121,6 +135,20 @@ query getPage($uri: ID!) {
                   sourceUrl
                 }
                 price
+                salePrice
+                regularPrice
+              }
+              ... on VariableProduct {
+                id
+                name
+                image {
+                  title
+                  altText
+                  sourceUrl
+                }
+                price
+                salePrice
+                regularPrice
               }
               databaseId
               id
