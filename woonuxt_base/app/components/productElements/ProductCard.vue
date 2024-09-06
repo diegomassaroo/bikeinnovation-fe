@@ -33,8 +33,6 @@ const imagetoDisplay = computed<string>(() => {
   }
   return mainImage.value;
 });
-
-console.log(props.node.price);
 </script>
 
 <template>
