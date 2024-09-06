@@ -37,11 +37,13 @@ onMounted(() => {
   setDefaultAttributes();
   updateAttrs();
 });
+
+console.log(attributes)
 </script>
 
 <template>
   <div class="flex flex-col gap-1 justify-between" v-if="attributes">
-    <div v-for="(attr, i) in attributes" :key="i" class="flex flex-wrap py-2 relative justify-between">
+    <div v-for="(attr, i) in attributes" :key="i" class="flex flex-wrap relative justify-between">
       <!-- COLOR SWATCHES -->
       <div v-if="attr.name == 'pa_color' || attr.name == 'color'" class="grid gap-2">
         <div>
@@ -61,7 +63,7 @@ onMounted(() => {
                 :name="attr.name"
                 :value="option"
                 @change="updateAttrs" />
-              <span class="color-button" :class="`color-${option}`" :title="`${attr.name}: ${option}`"></span>
+              <span class="color-button" :class="`color-${option}`" :title="`${attr.name}`"></span>
             </label>
           </span>
         </div>
@@ -79,24 +81,24 @@ onMounted(() => {
       </div>
 
       <!-- CHECKBOXES -->
-      <div v-else class="grid gap-2">
+      <div v-else class="grid gap-2 w-full">
         <div>
-          {{ attr.label }} <span v-if="activeVariations.length" class="text-gray-400 capitalize">: {{ decodeURIComponent(activeVariations[i].value) }}</span>
+          {{ attr.label }}
         </div>
-        <div class="flex gap-2">
-          <span v-for="(option, index) in attr.options" :key="index">
-            <label :for="`${option}_${index}`">
+        <div class="flex gap-2 justify-between">
+          <span v-for="(option, index) in attr.terms.nodes" :key="index" class="w-full">
+            <label :for="`${option.slug}_${index}`">
               <input
-                :id="`${option}_${index}`"
+                :id="`${option.slug}_${index}`"
                 :ref="attr.name"
                 class="hidden"
                 :checked="index == 0"
                 type="radio"
                 :class="`name-${attr.name}`"
                 :name="attr.name"
-                :value="option"
+                :value="option.slug"
                 @change="updateAttrs" />
-              <span class="radio-button" :class="`picker-${option}`" :title="`${attr.name}: ${option}`">{{ decodeURIComponent(option) }}</span>
+              <span class="radio-button" :class="`picker-${option.slug}`" :title="`${attr.name}: ${option.slug}`">{{ decodeURIComponent(option.name) }}</span>
             </label>
           </span>
         </div>
@@ -107,11 +109,11 @@ onMounted(() => {
 
 <style lang="postcss">
 .radio-button {
-  @apply border-transparent border-white rounded-lg cursor-pointer outline bg-gray-50 border-2 text-center outline-2 outline-gray-100 py-1.5 px-3 transition-all text-gray-800 inline-block hover:outline-gray-500;
+  @apply cursor-pointer border text-center py-1.5 px-3 w-full transition-all text-gray-300 inline-block hover:border-black hover:text-black;
 }
 
 .color-button {
-  @apply border-transparent border-white cursor-pointer outline bg-gray-50 border-2 rounded-2xl text-center outline-2 outline-gray-100 transition-all text-gray-800 inline-block hover:outline-gray-500;
+  @apply cursor-pointer border text-center transition-all text-gray-300 inline-block hover:border-black hover:text-black;
   width: 2rem;
   height: 2rem;
 }
@@ -145,6 +147,6 @@ onMounted(() => {
 }
 
 input[type='radio']:checked ~ span {
-  @apply outline outline-2 outline-gray-500;
+  @apply border border-black text-black;
 }
 </style>

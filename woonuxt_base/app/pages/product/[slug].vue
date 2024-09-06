@@ -105,12 +105,12 @@ watch(infoHeight, (v) => {
         :activeVariation="activeVariation || {}" />
       <NuxtImg v-else class="w-full h-screen overflow-hidden skeleton" src="/images/placeholder.jpg" :alt="product?.name || 'Product'" />
 
-      <div class="sticky-container md:z-10 block md:absolute bottom-0 md:m-1.5">
+      <div class="sticky-container w-full md:z-10 block md:absolute bottom-0 md:m-1.5">
         <div ref="infoEl" class="sticky-info md:sticky bg-white w-full md:max-w-sm p-2 md:p-3">
           <div class="mb-8 gap-2 grid">
             <div>
               <h1 class="uppercase flex flex-wrap items-center text-xl md:text-2xl tracking-s">
-                {{ type.name }}
+                {{ product.name }}
               </h1>
             </div>
             <ProductPrice :sale-price="type.salePrice" :regular-price="type.regularPrice" />
