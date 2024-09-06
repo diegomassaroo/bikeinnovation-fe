@@ -49,8 +49,6 @@ const props = defineProps({
     },
   },
 });
-
-console.log(props.text);
 </script>
 
 <template>
