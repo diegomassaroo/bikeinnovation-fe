@@ -11,6 +11,14 @@ export default defineNuxtConfig({
     head: {
       htmlAttrs: { lang: 'it' },
       link: [{ rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml' }],
+      // script: [
+      //   {
+      //     id: "cookieyes",
+      //     type: "text/javascript",
+      //     src: "https://cdn-cookieyes.com/client_data/6d8982d0ad7808769861e5cb/script.js",
+      //     defer: true, // Add this if you want the script to load after the initial content is parsed
+      //   },
+      // ],
     },
     pageTransition: { name: 'page', mode: 'default' },
   },

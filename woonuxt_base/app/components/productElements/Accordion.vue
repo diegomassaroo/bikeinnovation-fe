@@ -60,7 +60,7 @@ const toggleSection = (section) => {
       </button>
       <transition name="collapse">
         <p v-if="showShippingReturns" class="max-h-40 overflow-y-scroll">
-          Spediamo Express in tutto il mondo. Tutti i pacchi sono assicurati con un numero di tracciamento a tariffa fissa. Si prega di attendere fino a 1-2 giorni lavorativi per elaborare l'ordine. Gli ordini superiori a 1000€ potrebbero richiedere 1-3 giorni lavorativi aggiuntivi per la dichiarazione doganale. Le richieste di reso devono essere effettuate entro 14 giorni dalla consegna. Si prega di contattarci via email per effettuare un reso.
+          Spediamo Express in tutto il mondo. Tutti i pacchi sono assicurati con un numero di tracciamento a tariffa fissa. Si prega di attendere fino a 1-2 giorni lavorativi per elaborare l'ordine. Le richieste di reso devono essere effettuate entro 14 giorni dalla consegna. Si prega di contattarci via email per effettuare un reso.
         </p>
       </transition>
     </div>
