@@ -1,0 +1,9 @@
+query getAccordion {
+  page(idType: URI, id: "/contatti/") {
+    accordion {
+      assistenceContact
+      paymentMethod
+      shippingReturns
+    }
+  }
+}

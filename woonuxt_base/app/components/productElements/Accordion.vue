@@ -1,4 +1,5 @@
 <script setup>
+const { data: accordionData } = await useAsyncGql('getAccordion');
 const props = defineProps({
   description: {
     type: String,
@@ -60,7 +61,7 @@ const toggleSection = (section) => {
       </button>
       <transition name="collapse">
         <p v-if="showShippingReturns" class="max-h-40 overflow-y-scroll">
-          Spediamo Express in tutto il mondo. Tutti i pacchi sono assicurati con un numero di tracciamento a tariffa fissa. Si prega di attendere fino a 1-2 giorni lavorativi per elaborare l'ordine. Le richieste di reso devono essere effettuate entro 14 giorni dalla consegna. Si prega di contattarci via email per effettuare un reso.
+          {{ accordionData.page.accordion.shippingReturns }}
         </p>
       </transition>
     </div>
@@ -70,7 +71,7 @@ const toggleSection = (section) => {
       </button>
       <transition name="collapse">
         <p v-if="showPaymentMethod" class="max-h-40 overflow-y-scroll">
-          Accettiamo PayPal, Visa, Mastercard e la maggior parte delle principali carte di debito e di credito internazionali.
+          {{ accordionData.page.accordion.paymentMethod }}
         </p>
       </transition>
     </div>
@@ -80,7 +81,7 @@ const toggleSection = (section) => {
       </button>
       <transition name="collapse">
         <p v-if="showAssistenceContact" class="max-h-40 overflow-y-scroll">
-          Per qualsiasi domanda, contattare: E-mail: info@bikeinnovation.it
+          {{ accordionData.page.accordion.assistenceContact }}
         </p>
       </transition>
     </div>
