@@ -2,9 +2,10 @@
 interface Props {
   attributes: any[];
   defaultAttributes?: { nodes: Attribute[] };
+  disabled?: boolean;
 }
 
-const { attributes, defaultAttributes } = defineProps<Props>();
+const { attributes, defaultAttributes, disabled = false } = defineProps<Props>();
 const emit = defineEmits(['attrs-changed']);
 
 const activeVariations = ref<Attribute[]>([]);
@@ -40,7 +41,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="flex flex-col gap-1 justify-between" v-if="attributes">
+  <div class="flex flex-col gap-3 justify-between" v-if="attributes">
     <div v-for="(attr, i) in attributes" :key="i" class="flex flex-wrap relative justify-between">
       <!-- COLOR SWATCHES -->
       <div v-if="attr.name == 'pa_color' || attr.name == 'color'" class="grid gap-2">

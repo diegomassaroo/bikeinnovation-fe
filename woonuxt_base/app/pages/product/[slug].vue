@@ -71,6 +71,7 @@ const disabledAddToCart = computed(() => {
   return !type.value || stockStatus.value === StockStatusEnum.OUT_OF_STOCK || !activeVariation.value || isUpdatingCart.value;
 });
 
+
 const sliderEl = ref(null);
 const { height: sliderHeight } = useElementBounding(sliderEl);
 
@@ -105,8 +106,8 @@ watch(infoHeight, (v) => {
         :activeVariation="activeVariation || {}" />
       <NuxtImg v-else class="w-full h-screen overflow-hidden skeleton" src="/images/placeholder.jpg" :alt="product?.name || 'Product'" />
 
-      <div class="sticky-container w-full md:z-10 block md:absolute bottom-0 md:m-1.5">
-        <div ref="infoEl" class="sticky-info md:sticky bg-white w-full md:max-w-sm p-2 md:p-3">
+      <div class="sticky-container pointer-events-none w-full md:z-10 block md:absolute bottom-0 md:m-1.5">
+        <div ref="infoEl" class="sticky-info pointer-events-auto md:sticky bg-white w-full md:max-w-sm p-2 md:p-3">
           <div class="mb-8 gap-2 grid">
             <div>
               <h1 class="uppercase flex flex-wrap items-center text-xl md:text-2xl tracking-s">
@@ -134,6 +135,7 @@ watch(infoHeight, (v) => {
               :attributes="product.attributes.nodes"
               :defaultAttributes="product.defaultAttributes"
               :variations="product.variations.nodes"
+              :disabled="disabledAddToCart"
               @attrs-changed="updateSelectedVariations" />
             <div class="fixed bottom-0 left-0 z-10 flex items-center w-full gap-2 bg-white md:static md:bg-transparent bg-white md:p-0">
               <!-- <input
