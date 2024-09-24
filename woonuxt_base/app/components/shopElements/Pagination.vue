@@ -3,6 +3,7 @@ const route = useRoute();
 const { productsPerPage } = useHelpers();
 const { products } = useProducts();
 
+
 // TODO: Refactor all this logic. It's a mess.
 const currentQuery = computed(() => {
   const query = route.query;
@@ -45,12 +46,12 @@ const numberSrc = (pageNumber: number) => {
 </script>
 
 <template>
-  <div v-if="numberOfPages && numberOfPages > 1" class="flex justify-center mt-8 mb-16 col-span-full tabular-nums">
+  <div v-if="numberOfPages && numberOfPages > 1" class="flex justify-center mt-16 md:mt-28 mb-3 col-span-full tabular-nums">
     <!-- Pagination -->
-    <nav v-if="numberOfPages && numberOfPages > 1" class="inline-flex self-end -space-x-px rounded-md shadow-sm isolate" aria-label="Pagination">
+    <nav v-if="numberOfPages && numberOfPages > 1" class="bg-white flex p-2 md:p-3 h-9 items-center -space-x-px" aria-label="Pagination">
       <!-- PREV -->
       <NuxtLink :to="prevSrc(page)" class="prev" :disabled="page == 1" :class="{ 'cursor-not-allowed': page == 1 }" :aria-disabled="page == 1" aria-label="Previous">
-        <Icon name="ion:chevron-back-outline" size="20" class="w-5 h-5" />
+        ←
       </NuxtLink>
 
       <!-- NUMBERS -->
@@ -66,7 +67,7 @@ const numberSrc = (pageNumber: number) => {
         :class="{ 'cursor-not-allowed': page === numberOfPages }"
         :aria-disabled="page === numberOfPages"
         aria-label="Next">
-        <Icon name="ion:chevron-forward-outline" size="20" class="w-5 h-5" />
+        →
       </NuxtLink>
     </nav>
   </div>
@@ -76,22 +77,10 @@ const numberSrc = (pageNumber: number) => {
 .prev,
 .next,
 .page-number {
-  @apply bg-white border font-medium border-gray-300 p-2 text-gray-500 relative inline-flex items-center hover:bg-gray-50 focus:z-10;
-}
-
-.prev {
-  @apply rounded-l-md;
-}
-
-.next {
-  @apply rounded-r-md;
-}
-
-.page-number {
-  @apply px-3;
+  @apply bg-white border p-2 w-9 text-center border-gray-300 text-gray-500 relative items-center hover:border-black hover:text-black hover:z-20 focus:z-10;
 }
 
 .page-number[aria-current='page'] {
-  @apply bg-primary border-primary border bg-opacity-10 text-primary z-10;
+  @apply bg-gray-300 border-black border text-black z-10;
 }
 </style>

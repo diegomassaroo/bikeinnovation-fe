@@ -38,7 +38,7 @@ onBeforeUnmount(() => {
   <Transition name="fade" mode="out-in">
     <section v-if="!!products.length" class="relative w-full">
       <div v-for="(row, rowIndex) in splitProductsIntoRows(productsToShow, gridColumns)" :key="rowIndex" class="product-row border-t border-black">
-        <TransitionGroup name="shrink" tag="div" mode="in-out" class="product-grid">
+        <TransitionGroup name="shrink" tag="div" mode="in-out" class="gap-x-10 product-grid">
           <ProductCard v-for="(node, i) in row" :key="node.id || i" :node="node" :index="i" />
         </TransitionGroup>
       </div>
