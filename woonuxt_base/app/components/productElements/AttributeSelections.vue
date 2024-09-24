@@ -3,9 +3,10 @@ interface Props {
   attributes: any[];
   defaultAttributes?: { nodes: Attribute[] };
   disabled?: boolean;
+  availability?: StockStatusEnum[];
 }
 
-const { attributes, defaultAttributes, disabled = false } = defineProps<Props>();
+const { attributes, defaultAttributes, disabled = false, availability } = defineProps<Props>();
 const emit = defineEmits(['attrs-changed']);
 
 const activeVariations = ref<Attribute[]>([]);
@@ -97,7 +98,12 @@ onMounted(() => {
                 :name="attr.name"
                 :value="term.slug"
                 @change="updateAttrs" />
-              <span class="radio-button" :class="`picker-${term.slug}`" :title="`${attr.name}: ${term.slug}`">{{ term.name }}</span>
+              <span
+                class="radio-button"
+                :class="[`picker-${term.slug}`]"
+                :title="`${attr.name}: ${term.slug}`"
+                >{{ term.name }}</span
+              >
             </label>
           </span>
         </div>
@@ -108,7 +114,7 @@ onMounted(() => {
 
 <style lang="postcss">
 .radio-button {
-  @apply cursor-pointer border text-center py-1.5 px-3 w-full transition-all text-gray-300 inline-block hover:border-black hover:text-black;
+  @apply cursor-pointer border text-center py-1.5 px-3 w-full h-full transition-all text-gray-300 inline-block hover:border-black hover:text-black;
 }
 
 .color-button {

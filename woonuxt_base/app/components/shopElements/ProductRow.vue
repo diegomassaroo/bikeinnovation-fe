@@ -16,7 +16,7 @@ const props = defineProps({
         hidden: i >= products.length - 3,
         'md:block': i === products.length - 2,
         'md:hidden': i === products.length - 1,
-        '2xl:block': i === products.length - 1,
+        '3xl:block': i === products.length - 1,
       }" />
   </div>
 </template>

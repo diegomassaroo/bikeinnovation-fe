@@ -136,6 +136,7 @@ watch(infoHeight, (v) => {
               :defaultAttributes="product.defaultAttributes"
               :variations="product.variations.nodes"
               :disabled="disabledAddToCart"
+              :availability="product.variations.nodes.map(variation => variation.stockStatus)"
               @attrs-changed="updateSelectedVariations" />
             <div class="fixed bottom-0 left-0 z-10 flex items-center w-full gap-2 bg-white md:static md:bg-transparent bg-white md:p-0">
               <!-- <input
@@ -173,7 +174,7 @@ watch(infoHeight, (v) => {
     </div>
     <div v-if="product.related">
       <div class="text-xl md:text-2xl tracking-s p-2 md:p-1.5 pb-0 mt-16 md:pb-0">{{ $t('messages.shop.youMayLike') }}</div>
-      <ProductRow :products="product.related.nodes" class="grid-cols-2 md:grid-cols-3 gap-x-10 2xl:grid-cols-4" />
+      <ProductRow :products="product.related.nodes" class="grid-cols-2 md:grid-cols-3 gap-x-10 3xl:grid-cols-4" />
     </div>
   </main>
 </template>
