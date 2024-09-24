@@ -42,7 +42,7 @@ onBeforeUnmount(() => {
           <ProductCard v-for="(node, i) in row" :key="node.id || i" :node="node" :index="i" />
         </TransitionGroup>
       </div>
-      <Pagination />
+      <!-- <Pagination /> -->
     </section>
     <NoProductsFound v-else />
   </Transition>
