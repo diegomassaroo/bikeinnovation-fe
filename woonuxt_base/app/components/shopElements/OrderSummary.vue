@@ -10,7 +10,7 @@ const { cart, isUpdatingCart } = useCart();
       <CartCard v-for="item in cart.contents.nodes" :key="item.key" :item />
     </ul>
 
-    <!-- <AddCoupon class="my-8" /> -->
+    <AddCoupon class="my-2" />
 
     <div class="grid gap-1 text-gray-500">
       <div class="uppercase text-gray-500 flex justify-between">
@@ -22,7 +22,7 @@ const { cart, isUpdatingCart } = useCart();
         <span class="text-black tabular-nums">+ <span v-html="cart.shippingTotal" /></span>
       </div>
       <Transition name="scale-y" mode="out-in">
-        <div v-if="cart && cart.appliedCoupons" class="flex justify-between">
+        <div v-if="cart && cart.appliedCoupons" class="flex justify-between uppercase">
           <span>{{ $t('messages.shop.discount') }}</span>
           <span class="text-black tabular-nums">- <span v-html="cart.discountTotal" /></span>
         </div>

@@ -41,7 +41,7 @@ onMounted(() => {
 
 <style lang="postcss" scoped>
 .option {
-  @apply bg-white border text-black cursor-pointer flex flex-1 p-2 md:p-1.5 gap-2 items-center hover:border-black;
+  @apply bg-white border text-black cursor-pointer flex flex-1 p-2 gap-2 items-center hover:border-black;
 
   &.active-option {
     @apply border-black cursor-default pointer-events-none;
