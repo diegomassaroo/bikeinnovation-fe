@@ -56,7 +56,7 @@ const props = defineProps({
     <div class="relative" :class="{'mb-24 md:mb-40': spacer.includes('Large')}">
       <div v-if="picture" :class="size.includes('Left') ? 'flex justify-start' : 'flex justify-end'">
         <NuxtImg
-          :class="size.includes('Full') ? 'w-full' : 'w-1/2'"
+          :class="size.includes('Full') ? 'w-full aspect-video object-cover' : 'w-1/2 aspect-vertical'"
           :src="picture.node.sourceUrl"
           :alt="picture.node.altText"
           :title="picture.node.title"
@@ -76,6 +76,11 @@ const props = defineProps({
 </template>
 
 <style scoped>
+.aspect-vertical{
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+
 @media (min-width: 768px) {
   .translate-50 {
     transform: translate(-50%, -50%);
