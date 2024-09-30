@@ -2,14 +2,13 @@
 interface Props {
   attributes: any[];
   defaultAttributes?: { nodes: Attribute[] };
-  disabled?: boolean;
-  availability?: StockStatusEnum[];
 }
 
-const { attributes, defaultAttributes, disabled = false, availability } = defineProps<Props>();
+const { attributes, defaultAttributes } = defineProps<Props>();
 const emit = defineEmits(['attrs-changed']);
 
 const activeVariations = ref<Attribute[]>([]);
+
 
 const updateAttrs = () => {
   const selectedVariations = attributes.map((row): Attribute => {

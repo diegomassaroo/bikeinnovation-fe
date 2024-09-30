@@ -105,9 +105,9 @@ const props = defineProps({
           </div>
         </div>
       </div>
-      <div class="aspect-vertical w-full relative" v-if="secondThumb">
+      <div class="w-full relative" v-if="secondThumb">
         <NuxtImg
-          class="w-full"
+          class="aspect-vertical w-full"
           :src="secondThumb.picture.node.sourceUrl"
           :alt="secondThumb.picture.node.altText"
           :title="secondThumb.picture.node.title"

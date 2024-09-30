@@ -11,6 +11,10 @@ const slug = route.params.slug as string;
 const { data } = (await useAsyncGql('getProduct', { slug })) as { data: { value: { product: Product } } };
 const product = ref<Product>(data?.value?.product);
 
+console.log(product.value.variations);
+console.log(product.value.attributes);
+// console.log(product.value.variations.nodes.map(variation => variation.stockStatus));
+
 const quantity = ref<number>(1);
 const activeVariation = ref<Variation | null>(null);
 const variation = ref<Attribute[]>([]);
@@ -70,6 +74,7 @@ const disabledAddToCart = computed(() => {
   if (isSimpleProduct.value) return !type.value || stockStatus.value === StockStatusEnum.OUT_OF_STOCK || isUpdatingCart.value;
   return !type.value || stockStatus.value === StockStatusEnum.OUT_OF_STOCK || !activeVariation.value || isUpdatingCart.value;
 });
+
 
 
 const sliderEl = ref(null);
@@ -135,8 +140,6 @@ watch(infoHeight, (v) => {
               :attributes="product.attributes.nodes"
               :defaultAttributes="product.defaultAttributes"
               :variations="product.variations.nodes"
-              :disabled="disabledAddToCart"
-              :availability="product.variations.nodes.map(variation => variation.stockStatus)"
               @attrs-changed="updateSelectedVariations" />
             <div class="fixed bottom-0 left-0 z-10 flex items-center w-full gap-2 bg-white md:static md:bg-transparent bg-white md:p-0">
               <!-- <input
