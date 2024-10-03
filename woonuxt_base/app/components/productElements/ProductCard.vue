@@ -58,16 +58,11 @@ const imagetoDisplay = computed<string>(() => {
 
 <style lang="postcss">
 .product-card {
-  aspect-ratio: 2 / 3;
-}
-@media (min-width: 768px) {
-  .product-card {
-    aspect-ratio: 4 / 5;
-  }
+  aspect-ratio: 1;
 }
 
 .product-card img {
-  @apply object-center object-cover w-full h-full;
+  @apply object-center object-contain w-full h-full;
   overflow: hidden;
 }
 
