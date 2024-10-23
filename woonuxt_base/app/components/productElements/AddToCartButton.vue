@@ -16,7 +16,7 @@ watch(cart, (val) => {
 <template>
   <button
     type="submit"
-    class="flex bg-white border border-black uppercase text-black hover:duration-0 hover:bg-black hover:text-white text-center min-w-[150px] p-2 md:p-1.5 h-9 gap-4 items-center justify-center focus:outline-none"
+    class="flex bg-black md:bg-white border border-black uppercase text-white md:text-black hover:duration-0 hover:bg-black hover:text-white text-center min-w-[150px] p-2 md:p-1.5 h-12 md:h-9 gap-4 items-center justify-center focus:outline-none"
     :class="{ disabled: disabled }"
     :disabled="disabled"
     @click="isLoading = true">
