@@ -32,6 +32,6 @@ button {
 }
 
 button.disabled {
-  @apply cursor-not-allowed border-gray-300 text-gray-300 hover:text-gray-300 hover:bg-white;
+  @apply cursor-not-allowed bg-white border-gray-300 text-gray-300 hover:text-gray-300 hover:bg-white;
 }
 </style>
