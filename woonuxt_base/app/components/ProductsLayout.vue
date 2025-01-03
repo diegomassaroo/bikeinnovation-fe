@@ -52,7 +52,7 @@ const props = defineProps({
           <NuxtLink class="uppercase underline hover:no-underline" :to="link.url" :target="link.target">{{ link.title }}</NuxtLink>
         </div>
       </div>
-      <div v-if="product" class="grid grid-cols-2 gap-x-10 md:grid-cols-3 3xl:grid-cols-4 border-t border-b border-black">
+      <div v-if="product" class="grid grid-cols-2 gap-x-2 md:gap-x-6 md:grid-cols-3 3xl:grid-cols-4 border-t border-b border-black">
         <ProductCard
           v-for="(node, i) in product.nodes"
           :key="node.databaseId"
@@ -66,7 +66,7 @@ const props = defineProps({
             '3xl:block': i === product.nodes.length - 1,
           }" />
       </div>
-      <div v-if="product_second" class="grid grid-cols-2 gap-x-10 md:grid-cols-3 3xl:grid-cols-4 border-b border-black">
+      <div v-if="product_second" class="grid grid-cols-2 gap-x-2 md:gap-x-6 md:grid-cols-3 3xl:grid-cols-4 border-b border-black">
         <ProductCard
           v-for="(node, i) in product_second.nodes"
           :key="node.databaseId"

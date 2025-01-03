@@ -18,6 +18,21 @@ export default defineNuxtConfig({
           src: "https://cdn-cookieyes.com/client_data/6d8982d0ad7808769861e5cb/script.js",
           defer: true, // Add this if you want the script to load after the initial content is parsed
         },
+        {
+          id: "google-tag-manager",
+          async: true,
+          src: "https://www.googletagmanager.com/gtag/js?id=AW-10866766645",
+        },
+        {
+          id: "google-tag-config",
+          type: "text/javascript",
+          children: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'AW-10866766645');
+          `,
+        },
       ],
     },
     pageTransition: { name: 'page', mode: 'default' },

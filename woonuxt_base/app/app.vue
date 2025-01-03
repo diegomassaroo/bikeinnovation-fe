@@ -231,4 +231,12 @@ a {
 .tracking-s {
   letter-spacing: -0.015em;
 }
+
+.cky-btn-revisit-wrapper {
+  right: 15px;
+}
+
+.cky-revisit-bottom-left {
+  left: initial;
+}
 </style>

@@ -177,7 +177,7 @@ watch(infoHeight, (v) => {
     </div>
     <div v-if="product.related">
       <div class="text-xl md:text-2xl tracking-s p-2 md:p-1.5 pb-0 mt-16 md:pb-0">{{ $t('messages.shop.youMayLike') }}</div>
-      <ProductRow :products="product.related.nodes" class="grid-cols-2 md:grid-cols-3 gap-x-10 3xl:grid-cols-4" />
+      <ProductRow :products="product.related.nodes" class="grid-cols-2 md:grid-cols-3 gap-x-2 md:gap-x-6 3xl:grid-cols-4" />
     </div>
   </main>
 </template>
