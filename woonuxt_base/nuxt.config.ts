@@ -33,6 +33,18 @@ export default defineNuxtConfig({
             gtag('config', 'AW-10866766645');
           `,
         },
+        {
+          id: "conversion-tracking",
+          type: "text/javascript",
+          children: `
+            gtag('event', 'conversion', {
+                'send_to': 'AW-10866766645/af7gCP7Yq_8ZELXm1r0o',
+                'value': 0.0,
+                'currency': 'EUR',
+                'transaction_id': ''
+            });
+          `,
+        },
       ],
     },
     pageTransition: { name: 'page', mode: 'default' },
