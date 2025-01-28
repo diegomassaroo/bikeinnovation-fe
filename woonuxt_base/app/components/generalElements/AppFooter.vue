@@ -13,6 +13,7 @@ const { wooNuxtVersionInfo } = useHelpers();
           <NuxtLink class="text-white w-full flex sm:w-auto" to="/categoria-prodotto/biciclette">{{ $t('messages.shop.bikes') }}</NuxtLink>
           <NuxtLink class="text-white w-full flex sm:w-auto" to="/categoria-prodotto/componenti-e-accessori">{{ $t('messages.shop.componentsAndAccessories') }}</NuxtLink>
           <NuxtLink class="text-white w-full flex sm:w-auto" to="/categoria-prodotto/abbigliamento">{{ $t('messages.shop.clothing') }}</NuxtLink>
+          <NuxtLink class="text-white w-full flex sm:w-auto" to="/categoria-prodotto/usato">{{ $t('messages.shop.usato') }}</NuxtLink>
           <NuxtLink class="text-white w-full flex sm:w-auto" to="/chi-siamo">{{ $t('messages.general.about') }}</NuxtLink>
         </div>
       </div>

@@ -9,7 +9,7 @@ const isRouteActive = (uri) => {
 <template>
   <nav>
     <NuxtLink
-      :class="{'route-link-active' : isRouteActive('/categoria-prodotto/biciclette')}"
+      :class="{'route-link-active' : isRouteActive('/my-account')}"
       class="uppercase border-b border-gray-300 p-2 md:p-1.5 h-9 flex items-center lg:hidden"
       to="/my-account"
       >{{ $t('messages.account.personalAccount') }}</NuxtLink
@@ -31,6 +31,12 @@ const isRouteActive = (uri) => {
       class="uppercase border-b border-gray-300 lg:border-0 p-2 md:p-1.5 h-9 lg:h-auto flex items-center lg:p-0"
       to="/categoria-prodotto/abbigliamento"
       >{{ $t('messages.shop.clothing') }}</NuxtLink
+    >
+    <NuxtLink
+      :class="{'route-link-active' : isRouteActive('/categoria-prodotto/usato')}"
+      class="uppercase border-b border-gray-300 lg:border-0 p-2 md:p-1.5 h-9 lg:h-auto flex items-center lg:p-0"
+      to="/categoria-prodotto/usato"
+      >{{ $t('messages.shop.usato') }}</NuxtLink
     >
     <NuxtLink
       :class="{'route-link-active' : isRouteActive('/chi-siamo')}"

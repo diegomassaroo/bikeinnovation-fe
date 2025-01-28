@@ -34,6 +34,7 @@ const filteredCategories = computed(() => {
     '/categoria-prodotto/biciclette': 'biciclette',
     '/categoria-prodotto/componenti-e-accessori': 'componenti-e-accessori',
     '/categoria-prodotto/abbigliamento': 'abbigliamento',
+    '/categoria-prodotto/usato': 'usato',
   };
 
   const parentSlug = parentCategoryMap[route.path];
@@ -49,6 +50,7 @@ const filteredCategories = computed(() => {
       <span v-if="route.path === '/categoria-prodotto/biciclette'" class="text-xl md:text-2xl tracking-s">{{ $t('messages.shop.bikes') }}</span>
       <span v-if="route.path === '/categoria-prodotto/componenti-e-accessori'" class="text-xl md:text-2xl tracking-s">{{ $t('messages.shop.componentsAndAccessories') }}</span>
       <span v-if="route.path === '/categoria-prodotto/abbigliamento'" class="text-xl md:text-2xl tracking-s">{{ $t('messages.shop.clothing') }}</span>
+      <span v-if="route.path === '/categoria-prodotto/usato'" class="text-xl md:text-2xl tracking-s">{{ $t('messages.shop.usato') }}</span>
     </div>
     <div v-show="isOpen" class="p-2 md:p-1.5 max-h-[240px] flex gap-2 overflow-auto custom-scrollbar flex-wrap">
       <div v-for="cat in filteredCategories" :key="cat.slug" class="flex gap-2">
